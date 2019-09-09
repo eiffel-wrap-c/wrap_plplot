@@ -4,7 +4,7 @@
 You need to have a binary version of WrapC tool and for plplot you will need to compile the escript tool (tools/escript) and be able to
 execute them form the library folder.
 
-Before to regenerated the generated code, remove the folder generated_wrapper folder.
+Before to regenerate the generated code, remove the folder `generated_wrapper`.
 
 ## Using WrapC with geant
 $LIB_PATH is the path to the library folder where you checkout the wrap_plplot library.
