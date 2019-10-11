@@ -11,30 +11,6 @@ inherit
 
 	PLPLOT_FUNCTIONS_API
 		rename
-			plline as plline_api,
-			plstring as plstring_api,
-			plpoin as plpoin_api,
-			plhist as plhist_api,
-			plsym as plsym_api,
-			plscmap1l as plscmap1l_api,
-			plcont as plcont_api,
-			plmesh as plmesh_api,
-			plot3d as plot3d_api,
-			plmeshc as plmeshc_api,
-			plfill as plfill_api,
-			plfill3 as plfill3_api,
-			plshade as plshade_api,
-			plpat as plpat_api,
-			plline3 as plline3_api,
-			plshades as plshades_api,
-			plcolorbar as plcolorbar_api,
-			plstripc as plstripc_api,
-			plstring3 as plstring3_api,
-			plpoly3 as plpoly3_api,
-			plmap as plmap_api,
-			plmapfill as plmapfill_api,
-			plmapline as plmapline_api,
-			plimage as plimage_api,
 			pl_static2d_grid as pl_static2d_grid_api
 		end
 
@@ -42,19 +18,19 @@ feature -- Access
 
 	initialize
 		do
-			plinit
+			c_plinit
 		end
 
 	finalize
 		do
-			plend
+			c_plend
 		end
 
 	plline (x: ARRAY [REAL_64]; y: ARRAY [REAL_64])
 		require
 			arrays_same_length: x.count = y.count
 		do
-			plline_api (x.count, x.area.base_address, y.area.base_address)
+			c_plline (x.count, x.area.base_address, y.area.base_address)
 		end
 
 	plline3 (x: ARRAY [REAL_64]; y: ARRAY [REAL_64]; z: ARRAY [REAL_64])
@@ -120,7 +96,7 @@ feature -- Access
 			end
 
 
-			c_pllegend (
+			c_c_pllegend (
 						p_legend_width, p_legend_height, opt, position,
 						x, y, plot_width, bg_color, bb_color, bb_style,
 						nrow, ncolumn, nlegend, opt_array.area.base_address, text_offset,
@@ -135,28 +111,28 @@ feature -- Access
 		require
 			arrays_same_length: x.count = y.count
 		do
-			plstring_api (x.count, x.area.base_address, y.area.base_address, string)
+			c_plstring (x.count, x.area.base_address, y.area.base_address, string)
 		end
 
 
 	plhist (data: ARRAY [REAL_64]; datmin: REAL_64; datmax: REAL_64; nbin: INTEGER; opt: INTEGER)
 		do
-			plhist_api (data.count, data.area.base_address, datmin, datmax, nbin, opt)
+			c_plhist (data.count, data.area.base_address, datmin, datmax, nbin, opt)
 		end
 
 	plsym ( x: ARRAY [REAL_64]; y: ARRAY [REAL_64]; code: INTEGER)
 		require
 			arrays_same_length: x.count = y.count
 		do
-			plsym_api (x.count, x.area.base_address, y.area.base_address, code)
+			c_plsym (x.count, x.area.base_address, y.area.base_address, code)
 		end
 
 	plscmap1l (itype: INTEGER; npts: INTEGER; intensity: ARRAY [REAL_64]; coord1: ARRAY [REAL_64]; coord2: ARRAY [REAL_64]; coord3: ARRAY [REAL_64]; alt_hue_path: ARRAY [BOOLEAN])
 		do
 			if alt_hue_path.is_empty  then
-				plscmap1l_api (itype, npts, intensity.area.base_address, coord1.area.base_address, coord2.area.base_address, coord3.area.base_address, default_pointer)
+				c_plscmap1l (itype, npts, intensity.area.base_address, coord1.area.base_address, coord2.area.base_address, coord3.area.base_address, default_pointer)
 			else
-				plscmap1l_api (itype, npts, intensity.area.base_address, coord1.area.base_address, coord2.area.base_address, coord3.area.base_address, alt_hue_path.area.base_address)
+				c_plscmap1l (itype, npts, intensity.area.base_address, coord1.area.base_address, coord2.area.base_address, coord3.area.base_address, alt_hue_path.area.base_address)
 			end
 		end
 
@@ -188,24 +164,24 @@ feature -- Access
 
 	plmesh (x: ARRAY [REAL_64]; y: ARRAY [REAL_64]; z: PLPLOT_GRID2; nx: INTEGER; ny: INTEGER; opt: INTEGER)
 		do
-			plmesh_api (x.area.base_address, y.area.base_address, z.pointer, nx, ny, opt)
+			c_plmesh (x.area.base_address, y.area.base_address, z.pointer, nx, ny, opt)
 		end
 
 	plot3d (x: ARRAY [REAL_64]; y: ARRAY [REAL_64]; z: PLPLOT_GRID2; nx: INTEGER; ny: INTEGER; opt: INTEGER; side: INTEGER)
 		do
-			plot3d_api (x.area.base_address, y.area.base_address, z.pointer, nx, ny, opt, side)
+			c_plot3d (x.area.base_address, y.area.base_address, z.pointer, nx, ny, opt, side)
 		end
 
 	plmeshc (x: ARRAY [REAL_64]; y: ARRAY [REAL_64]; z: PLPLOT_GRID2; nx: INTEGER; ny: INTEGER; opt: INTEGER; clevel: ARRAY [REAL_64]; nlevel: INTEGER)
 		do
-			plmeshc_api (x.area.base_address, y.area.base_address, z.pointer, nx, ny, opt, clevel.area.base_address, nlevel)
+			c_plmeshc (x.area.base_address, y.area.base_address, z.pointer, nx, ny, opt, clevel.area.base_address, nlevel)
 		end
 
 	plfill (x: ARRAY [REAL_64]; y: ARRAY [REAL_64])
 		require
 			arrays_same_length: x.count = y.count
 		do
-			plfill_api (x.count, x.area.base_address, y.area.base_address)
+			c_plfill (x.count, x.area.base_address, y.area.base_address)
 		end
 
 	plfill3 (x: ARRAY [REAL_64]; y: ARRAY [REAL_64]; z: ARRAY [REAL_64])
@@ -281,7 +257,7 @@ feature -- Access
 			across axis_opts as ic  loop
 				mpx.put_pointer ((create {C_STRING}.make (ic.item)).item, (ic.cursor_index - 1)*{PLATFORM}.pointer_bytes)
 			end
-			c_plcolorbar (p_colorbar_width, p_colorbar_height, opt, position,
+			c_c_plcolorbar (p_colorbar_width, p_colorbar_height, opt, position,
 							x, y, x_length, y_length, bg_color, bb_color, bb_style,
 							low_cap_color, high_cap_color, cont_color, cont_width, n_labels, label_opts,
 							mpl.item, n_axes,
@@ -329,7 +305,7 @@ feature -- Access
 				l_legline.put_pointer ((create {C_STRING}.make (ic.item)).item, (ic.cursor_index - 1)*{PLATFORM}.pointer_bytes)
 			end
 
-			c_plstripc (id,l_xspec.item, l_yspec.item, xmin,
+			c_c_plstripc (id,l_xspec.item, l_yspec.item, xmin,
 						xmax, xjump, ymin, ymax,
 						xlpos, ylpos, y_ascl, acc,
 						colbox, collab, colline.area.base_address,
@@ -341,7 +317,7 @@ feature -- Access
 		require
 			arrays_same_length: x.count = y.count and x.count = z.count
 		do
-			plstring3_api (x.count, x.area.base_address, y.area.base_address, z.area.base_address,  string)
+			c_plstring3 (x.count, x.area.base_address, y.area.base_address, z.area.base_address,  string)
 		end
 
 	plpoly3 (x: ARRAY [REAL_64]; y: ARRAY [REAL_64]; z: ARRAY[REAL_64]; draw: ARRAY [INTEGER]; ifcc: INTEGER)
@@ -349,22 +325,22 @@ feature -- Access
 			arrays_same_length: x.count = y.count and x.count = z.count
 			draw_same_length_xyx_arrays_minus_one:  x.count - 1 = draw.count
 		do
-			plpoly3_api (x.count, x.area.base_address, y.area.base_address, z.area.base_address, draw.area.base_address, ifcc)
+			c_plpoly3 (x.count, x.area.base_address, y.area.base_address, z.area.base_address, draw.area.base_address, ifcc)
 		end
 
 	plmap (mapform: POINTER; name: STRING; minx: REAL_64; maxx: REAL_64; miny: REAL_64; maxy: REAL_64)
 		do
-			c_plmap (mapform, name.area.base_address, minx, maxx, miny, maxy)
+			c_c_plmap (mapform, name.area.base_address, minx, maxx, miny, maxy)
 		end
 
 	plmapfill (mapform: POINTER; name: STRING; minx: REAL_64; maxx: REAL_64; miny: REAL_64; maxy: REAL_64; plotentries: ARRAY [INTEGER]; nplotentries: INTEGER)
 		do
-			plmapfill_api (mapform, name, minx, maxx, miny, maxy, plotentries.area.base_address, nplotentries)
+			c_plmapfill (mapform, name, minx, maxx, miny, maxy, plotentries.area.base_address, nplotentries)
 		end
 
 	plmapline (mapform: POINTER; name: STRING; minx: REAL_64; maxx: REAL_64; miny: REAL_64; maxy: REAL_64; plotentries: ARRAY [INTEGER]; nplotentries: INTEGER)
 		do
-			c_plmapline (mapform,  (create {C_STRING}.make (name)).item, minx, maxx, miny, maxy, plotentries.area.base_address, nplotentries)
+			c_c_plmapline (mapform,  (create {C_STRING}.make (name)).item, minx, maxx, miny, maxy, plotentries.area.base_address, nplotentries)
 		end
 
 

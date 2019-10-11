@@ -11,7 +11,7 @@
       <wrapper type="none">
       </wrapper>
     </rule>
-    
+
     <rule>
       <match>
         <identifier name="c_pl.*"/>

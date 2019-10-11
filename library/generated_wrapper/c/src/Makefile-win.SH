@@ -13,7 +13,7 @@ MV = $mv
 RM = $del
 MAKE = $make
 MKDIR = $mkdir
-OBJECTS = ewg_unknown_callback_c_glue_code.$obj
+OBJECTS = ewg_plplot_callback_c_glue_code.$obj
 
 .c.$obj:
 	$(CC) -c $(JCFLAGS) $<
@@ -21,13 +21,13 @@ OBJECTS = ewg_unknown_callback_c_glue_code.$obj
 all:: standard
 	$(MAKE) clean
 
-standard:: eif_unknown.lib
+standard:: eif_plplot.lib
 
 clean:
 	$(RM) *.$obj
 	$(RM) *.lib
 
-eif_unknown.lib: $(OBJECTS)
+eif_plplot.lib: $(OBJECTS)
 	$alib_line
 	$(MKDIR) $(TOP)$(DIR)$(TOP)$(DIR)$(TOP)$(DIR)C$(DIR)spec$(DIR)$(ISE_C_COMPILER)$(DIR)$(ISE_PLATFORM)$(DIR)lib
 	$(MV) $@ $(TOP)$(DIR)$(TOP)$(DIR)$(TOP)$(DIR)C$(DIR)spec$(DIR)$(ISE_C_COMPILER)$(DIR)$(ISE_PLATFORM)$(DIR)lib$(DIR)$@
