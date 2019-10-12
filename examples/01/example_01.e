@@ -66,8 +66,4 @@ feature {NONE} -- Initialization
 			io.read_line
 		end
 
-
---	// Parse and process command line arguments
---    plparseopts( &argc, argv, PL_PARSE_FULL );
-
 end

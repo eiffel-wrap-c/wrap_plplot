@@ -22,7 +22,7 @@ feature --Initialization
 			-- Initialize plplot
 
 		    initialize
-    		plfont( 2 )
+    		c_plfont( 2 )
 
 			-- Make log plots using two different styles.
 
@@ -58,7 +58,7 @@ feature -- Plotting
 			create ampl.make_filled (0.0, 1, 101)
 			create phase.make_filled (0.0, 1, 101)
 
-			pladv( 0 );
+			c_pladv( 0 );
 
 				-- Set up data for log plot
 			f0 := 1.0
@@ -69,45 +69,45 @@ feature -- Plotting
 				phase[ic.item + 1] := -( 180.0 / {DOUBLE_MATH}.pi ) * {DOUBLE_MATH}.arc_tangent( freq / f0 )
 			end
 
-			plvpor( 0.15, 0.85, 0.1, 0.9 );
-			plwind( -2.0, 3.0, -80.0, 0.0 );
+			c_plvpor( 0.15, 0.85, 0.1, 0.9 );
+			c_plwind( -2.0, 3.0, -80.0, 0.0 );
 
 				-- Try different axis and labelling styles.
 
-    		plcol0( 1 )
+    		c_plcol0( 1 )
     		inspect a_type
     		when 0 then
-    			plbox( "bclnst", 0.0, 0, "bnstv", 0.0, 0 )
+    			c_plbox( "bclnst", 0.0, 0, "bnstv", 0.0, 0 )
     		when 1 then
-    			plbox( "bcfghlnst", 0.0, 0, "bcghnstv", 0.0, 0 )
+    			c_plbox( "bcfghlnst", 0.0, 0, "bcghnstv", 0.0, 0 )
     		end
 
 				-- Plot ampl vs freq
 
-    		plcol0( 2 )
+    		c_plcol0( 2 )
     		plline(freq1, ampl )
-    		plcol0( 2 )
-    		plptex( 1.6, -30.0, 1.0, -20.0, 0.5, "-20 dB/decade" )
+    		c_plcol0( 2 )
+    		c_plptex( 1.6, -30.0, 1.0, -20.0, 0.5, "-20 dB/decade" )
 
 				-- Put labels on
-		    plcol0( 1 )
-		    plmtex( "b", 3.2, 0.5, 0.5, "Frequency" )
-		    plmtex( "t", 2.0, 0.5, 0.5, "Single Pole Low-Pass Filter" )
-		    plcol0( 2 )
-		    plmtex( "l", 5.0, 0.5, 0.5, "Amplitude (dB)" )
+		    c_plcol0( 1 )
+		    c_plmtex( "b", 3.2, 0.5, 0.5, "Frequency" )
+		    c_plmtex( "t", 2.0, 0.5, 0.5, "Single Pole Low-Pass Filter" )
+		    c_plcol0( 2 )
+		    c_plmtex( "l", 5.0, 0.5, 0.5, "Amplitude (dB)" )
 		    nlegend := 1
 
 				-- For the gridless case, put phase vs freq on same plot
 
 		    if  a_type = 0 then
-				plcol0( 1 )
-		        plwind( -2.0, 3.0, -100.0, 0.0 )
-		        plbox( "", 0.0, 0, "cmstv", 30.0, 3 )
-		        plcol0( 3 )
+				c_plcol0( 1 )
+		        c_plwind( -2.0, 3.0, -100.0, 0.0 )
+		        c_plbox( "", 0.0, 0, "cmstv", 30.0, 3 )
+		        c_plcol0( 3 )
 		        plline( freq1, phase );
 		        plstring(freq1, phase, "#(728)" )
-		        plcol0( 3 )
-		        plmtex( "r", 5.0, 0.5, 0.5, "Phase shift (degrees)" )
+		        c_plcol0( 3 )
+		        c_plmtex( "r", 5.0, 0.5, 0.5, "Phase shift (degrees)" )
 		        nlegend := 2
 		    end
 
@@ -152,7 +152,7 @@ feature -- Plotting
 				-- from the above opt_arrays we can completely ignore everything
 				-- to do with boxes.
 
-			plscol0a( 15, 32, 32, 32, 0.70 )
+			c_plscol0a( 15, 32, 32, 32, 0.70 )
 		    pllegend (  $legend_width,
 		    			$legend_height,
 		    			{PLPLOT_CONSTANTS}.PL_LEGEND_BACKGROUND | {PLPLOT_CONSTANTS}.PL_LEGEND_BOUNDING_BOX,

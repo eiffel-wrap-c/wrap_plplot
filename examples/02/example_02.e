@@ -47,20 +47,20 @@ feature -- Initialization
 
 			-- Version number
 		   create ver.make (80)
-		   plgver (ver)
+		   c_plgver (ver)
 		   print ("PLplot library version: " + ver + "%N")
 
 		   	-- Initialize plplot
 			-- Divide page into 2x2 plots
 			-- Note: calling plstar replaces separate calls to plssub and plinit
-    		plstar( 2, 2 );
+    		c_plstar( 2, 2 );
 
     		--  Select font set as per input flag (1,0)
     		--  it should be a BOOL
 			if fontset = 1 then
-				plfontld (1)
+				c_plfontld (1)
 			else
-				plfontld (0)
+				c_plfontld (0)
 			end
 
 
@@ -84,7 +84,7 @@ feature -- Initialization
 
    			-- Do a plot
    			digmax := 5
-   			plsyax (digmax, 0)
+   			c_plsyax (digmax, 0)
 			plot1 (1)
 
 			plot2
@@ -153,18 +153,18 @@ feature -- Plotting
 				-- scaled separately (just = 0), and we just draw a labelled
 				-- box (axis = 0).
 
-				plcol0 (1)
-				plenv (xmin, xmax, ymin, ymax, 0, 0)
-				plcol0 (2)
-				pllab( "(x)", "(y)", "#frPLplot Example 1 - y=x#u2" )
+				c_plcol0 (1)
+				c_plenv (xmin, xmax, ymin, ymax, 0, 0)
+				c_plcol0 (2)
+				c_pllab( "(x)", "(y)", "#frPLplot Example 1 - y=x#u2" )
 
 
 				-- Plot the data points
-				plcol0 (4)
+				c_plcol0 (4)
 				plpoin (xs, ys, 9)
 
 				-- Draw the line through the data
-				plcol0 (3)
+				c_plcol0 (3)
 				plline( x, y )
 
 				if a = 1 and test_xor = 1 then
@@ -183,10 +183,10 @@ feature -- Plotting
 			-- Set up the viewport and window using PLENV. The range in X is -2.0 to
 			-- 10.0, and the range in Y is -0.4 to 2.0. The axes are scaled separately
 			-- (just = 0), and we draw a box with axes (axis = 1).
-			plcol0( 1 );
-			plenv( -2.0, 10.0, -0.4, 1.2, 0, 1 );
-			plcol0( 2 );
-			pllab( "(x)", "sin(x)/x", "#frPLplot Example 1 - Sinc Function" );
+			c_plcol0( 1 );
+			c_plenv( -2.0, 10.0, -0.4, 1.2, 0, 1 );
+			c_plcol0( 2 );
+			c_pllab( "(x)", "sin(x)/x", "#frPLplot Example 1 - Sinc Function" );
 
 			-- Fill up the arrays
 			across 0 |..| (size-1) as ic  loop
@@ -197,10 +197,10 @@ feature -- Plotting
 				end
 			end
 			-- Draw the line
-			plcol0 (3)
-			plwidth (2)
+			c_plcol0 (3)
+			c_plwidth (2)
 			plline (x, y)
-			plwidth (1)
+			c_plwidth (1)
 		end
 
 
@@ -217,29 +217,29 @@ feature -- Plotting
 			mark1 := 1500
 			-- For the final graph we wish to override the default tick intervals, and
 			-- so do not use plenv().
-			pladv (0)
+			c_pladv (0)
 
 			-- Use standard viewport, and define X range from 0 to 360 degrees, Y range
 			-- from -1.2 to 1.2.
 
-		    plvsta;
-			plwind( 0.0, 360.0, -1.2, 1.2 );
+		    c_plvsta;
+			c_plwind( 0.0, 360.0, -1.2, 1.2 );
 
 			-- Draw a box with ticks spaced 60 degrees apart in X, and 0.2 in Y.
 
-		    plcol0( 1 );
-		    plbox( "bcnst", 60.0, 2, "bcnstv", 0.2, 2 );
+		    c_plcol0( 1 );
+		    c_plbox( "bcnst", 60.0, 2, "bcnstv", 0.2, 2 );
 
 			-- Superimpose a dashed line grid, with 1.5 mm marks and spaces.
 			-- plstyl expects a pointer!
 
-		    plstyl( 1, $mark1, $space1 )
-		    plcol0( 2 );
-		    plbox( "g", 30.0, 0, "g", 0.2, 0 );
-		    plstyl( 0, $mark0, $space0 );
+		    c_plstyl( 1, $mark1, $space1 )
+		    c_plcol0( 2 );
+		    c_plbox( "g", 30.0, 0, "g", 0.2, 0 );
+		    c_plstyl( 0, $mark0, $space0 );
 
-		    plcol0( 3 );
-		    pllab( "Angle (degrees)", "sine", "#frPLplot Example 1 - Sine function" );
+		    c_plcol0( 3 );
+		    c_pllab( "Angle (degrees)", "sine", "#frPLplot Example 1 - Sine function" );
 
 			create x.make_filled (0.0, 1, size)
 			create y.make_filled (0.0, 1, size)
@@ -250,7 +250,7 @@ feature -- Plotting
      	  	   y[ic.item + 1] :=  {DOUBLE_MATH}.sine (x[ic.item+1]* {MATH_CONST}.pi / 180.0)
 			end
 
-		    plcol0( 4 );
+		    c_plcol0( 4 );
 		    plline(x, y );
 		end
 

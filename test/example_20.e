@@ -2,7 +2,7 @@ note
 	description: "[
 		Illustrates backdrop plotting of world, US maps.
 	    Contributed by Wesley Ebisuzaki.
-		Require build plplot with shapelib	
+		Require build plplot with shapelib
 	]"
 	date: "$Date$"
 	revision: "$Revision$"
@@ -66,10 +66,10 @@ feature {NONE} --Initialization
 
 		    		-- Setup a custom latitude and longitude-based scaling function.
 		    create l_labeler.make (agent geolocation_labeler)
-		    plslabelfunc( l_labeler.c_dispatcher, default_pointer )
+		    c_plslabelfunc( l_labeler.c_dispatcher, default_pointer )
 
-		    plcol0( 1 )
-		    plenv( minx, maxx, miny, maxy, 1, 70 )
+		    c_plcol0( 1 )
+		    c_plenv( minx, maxx, miny, maxy, 1, 70 )
 		    plmap( default_pointer, "usaglobe", minx, maxx, miny, maxy )
 
 		     	-- The Americas
@@ -77,24 +77,24 @@ feature {NONE} --Initialization
 		    minx := 190
 		    maxx := 340
 
-		    plcol0( 1 )
-		    plenv( minx, maxx, miny, maxy, 1, 70 )
+		    c_plcol0( 1 )
+		    c_plenv( minx, maxx, miny, maxy, 1, 70 )
 		    plmap( default_pointer, "usaglobe", minx, maxx, miny, maxy )
 
 		    	-- Clear the labeling function.
-		    plslabelfunc( default_pointer, default_pointer )
+		    c_plslabelfunc( default_pointer, default_pointer )
 
 				-- Polar, Northern hemisphere
 
 		    minx := 0;
 		    maxx := 360;
 
-		    plenv( -75., 75., -75., 75., 1, -1 )
+		    c_plenv( -75., 75., -75., 75., 1, -1 )
 		   	create l_map.make (agent mapform19)
 		    plmap( l_map.c_dispatcher, "globe", minx, maxx, miny, maxy )
 
-		    pllsty( 2 )
-		    plmeridians( l_map.c_dispatcher, 10.0, 10.0, 0.0, 360.0, -10.0, 80.0 )
+		    c_pllsty( 2 )
+		    c_plmeridians( l_map.c_dispatcher, 10.0, 10.0, 0.0, 360.0, -10.0, 80.0 )
 
 				--// Polar, Northern hemisphere, this time with a PLplot-wide transform
 
@@ -102,85 +102,85 @@ feature {NONE} --Initialization
 		    maxx := 360
 
 			create l_transform.make (agent map_transform)
-		    plstransform( l_transform.c_dispatcher, default_pointer )
+		    c_plstransform( l_transform.c_dispatcher, default_pointer )
 
-		    pllsty( 1 )
-		    plenv( -75., 75., -75., 75., 1, -1 )
+		    c_pllsty( 1 )
+		    c_plenv( -75., 75., -75., 75., 1, -1 )
 		    -- No need to set the map transform here as the global transform will be used.
 		    plmap( default_pointer, "globe", minx, maxx, miny, maxy )
 
-		    pllsty( 2 )
-		    plmeridians( default_pointer, 10.0, 10.0, 0.0, 360.0, -10.0, 80.0 )
+		    c_pllsty( 2 )
+		    c_plmeridians( default_pointer, 10.0, 10.0, 0.0, 360.0, -10.0, 80.0 )
 
 				--    // Show Baltimore, MD on the map
-		    plcol0( 2 )
-		    plssym( 0.0, 2.0 )
+		    c_plcol0( 2 )
+		    c_plssym( 0.0, 2.0 )
 		    x := <<-76.6125>>
 		    y := <<39.2902778>>
 		    plpoin(x, y, 18 )
-		    plssym( 0.0, 1.0 )
-		    plptex( -76.6125, 43.0, 0.0, 0.0, 0.0, "Baltimore, MD" )
+		    c_plssym( 0.0, 1.0 )
+		    c_plptex( -76.6125, 43.0, 0.0, 0.0, 0.0, "Baltimore, MD" )
 
 				-- For C, this is how the global transform is cleared
-    		plstransform( default_pointer, default_pointer );
+    		c_plstransform( default_pointer, default_pointer );
 
     		-- An example using shapefiles. The shapefiles used are from Ordnance Survey, UK.
 			-- These were chosen because they provide shapefiles for small grid boxes which
 			-- are easilly manageable for this demo.
 
-		    pllsty( 1 )
+		    c_pllsty( 1 )
 
 
 		    minx := 240570;
 		    maxx := 621109;
 		    miny := 87822;
 		    maxy := 722770;
-		    plscol0( 0, 255, 255, 255 );
-		    plscol0( 1, 0, 0, 0 );
-		    plscol0( 2, 150, 150, 150 );
-		    plscol0( 3, 0, 50, 200 );
-		    plscol0( 4, 50, 50, 50 );
-		    plscol0( 5, 150, 0, 0 );
-		    plscol0( 6, 100, 100, 255 );
+		    c_plscol0( 0, 255, 255, 255 );
+		    c_plscol0( 1, 0, 0, 0 );
+		    c_plscol0( 2, 150, 150, 150 );
+		    c_plscol0( 3, 0, 50, 200 );
+		    c_plscol0( 4, 50, 50, 50 );
+		    c_plscol0( 5, 150, 0, 0 );
+		    c_plscol0( 6, 100, 100, 255 );
 
 
 		    minx := 265000;
 		    maxx := 270000;
 		    miny := 145000;
 		    maxy := 150000;
-		    plscol0( 0, 255, 255, 255 );  --white
-		    plscol0( 1, 0, 0, 0 );        --black
-		    plscol0( 2, 255, 200, 0 );    --yelow for sand
-		    plscol0( 3, 60, 230, 60 );    -- green for woodland
-		    plscol0( 4, 210, 120, 60 );   --brown for contours
-		    plscol0( 5, 150, 0, 0 );      --red for major roads
-		    plscol0( 6, 180, 180, 255 );  --pale blue for water
-		    plscol0( 7, 100, 100, 100 );  --pale grey for shingle or boulders
-		    plscol0( 8, 100, 100, 100 );  --dark grey for custom polygons - generally crags
+		    c_plscol0( 0, 255, 255, 255 );  --white
+		    c_plscol0( 1, 0, 0, 0 );        --black
+		    c_plscol0( 2, 255, 200, 0 );    --yelow for sand
+		    c_plscol0( 3, 60, 230, 60 );    -- green for woodland
+		    c_plscol0( 4, 210, 120, 60 );   --brown for contours
+		    c_plscol0( 5, 150, 0, 0 );      --red for major roads
+		    c_plscol0( 6, 180, 180, 255 );  --pale blue for water
+		    c_plscol0( 7, 100, 100, 100 );  --pale grey for shingle or boulders
+		    c_plscol0( 8, 100, 100, 100 );  --dark grey for custom polygons - generally crags
 
 
-		    plcol0( 1 );
-		    plenv( minx, maxx, miny, maxy, 1, -1 );
-		    pllab( "", "", "Martinhoe CP, Exmoor National Park, UK (shapelib only)" );
+		    c_plcol0( 1 );
+		    c_plenv( minx, maxx, miny, maxy, 1, -1 );
+		    c_pllab( "", "", "Martinhoe CP, Exmoor National Park, UK (shapelib only)" );
 
 
 		    	--Beach
-		    plcol0( 2 );
+		    c_plcol0( 2 );
 		    plmapfill( default_pointer, "ss/ss64ne_Landform_Area", minx, maxx, miny, maxy, beachareas, nbeachareas );
 
 		    	-- woodland
-		    plcol0( 3 );
+		    c_plcol0( 3 );
 		    across 0 |..| nwoodlandareas as i loop
 		    	woodlandareas[i.item + 1] := i.item + 218;
 		    end
 		    plmapfill( default_pointer, "ss/ss64ne_Landform_Area", minx, maxx, miny, maxy, woodlandareas, nwoodlandareas );
 
 		    	--shingle or boulders
-		    plcol0( 7 );
+		    c_plcol0( 7 );
 		    plmapfill( default_pointer, "ss/ss64ne_Landform_Area", minx, maxx, miny, maxy, shingleareas, nshingleareas );
 
 		    	-- crags
-		    plcol0( 8 );
+		    c_plcol0( 8 );
 		    across 1 |..| (ncragareas - 1) as i loop
 		    	cragareas[i.item + 1] := i.item + 325;
 		    end
@@ -190,49 +190,49 @@ feature {NONE} --Initialization
 
 		    	-- draw contours, we need to separate contours from high/low coastline
 		    	-- draw_contours(pls, "ss/SS64_line", 433, 20, 4, 3, minx, maxx, miny, maxy );
-		    plcol0( 4 )
+		    c_plcol0( 4 )
 		    plmapline( default_pointer, "ss/ss64ne_Height_Contours", minx, maxx, miny, maxy, {ARRAY [INTEGER_32]} <<>>, 0 );
 
 		    -- draw the sea and surface water
-		    plwidth( 0.0 )
-		    plcol0( 6 )
+		    c_plwidth( 0.0 )
+		    c_plcol0( 6 )
 		    plmapfill( default_pointer, "ss/ss64ne_Water_Area", minx, maxx, miny, maxy, {ARRAY [INTEGER_32]}<<>>, 0 );
-		    plwidth( 2.0 );
+		    c_plwidth( 2.0 );
 		    plmapline( default_pointer, "ss/ss64ne_Water_Line", minx, maxx, miny, maxy, {ARRAY [INTEGER_32]} <<>>, 0 );
 
 		     -- draw the roads, first with black and then thinner with colour to give an
 		     -- an outlined appearance
-		    plwidth( 5.0 );
-		    plcol0( 1 );
+		    c_plwidth( 5.0 );
+		    c_plcol0( 1 );
 		    plmapline( default_pointer, "ss/ss64ne_Road_Centreline", minx, maxx, miny, maxy, {ARRAY [INTEGER_32]} <<>>, 0 );
-		    plwidth( 3.0 );
-		    plcol0( 0 );
+		    c_plwidth( 3.0 );
+		    c_plcol0( 0 );
 		    plmapline( default_pointer, "ss/ss64ne_Road_Centreline", minx, maxx, miny, maxy, {ARRAY [INTEGER_32]} <<>>, 0 );
-		    plcol0( 5 );
+		    c_plcol0( 5 );
 		    plmapline( default_pointer, "ss/ss64ne_Road_Centreline", minx, maxx, miny, maxy, majorroads, 9 );
 
 		     -- draw buildings
-		    plwidth( 1.0 );
-		    plcol0( 1 );
+		    c_plwidth( 1.0 );
+		    c_plcol0( 1 );
 		    plmapfill( default_pointer, "ss/ss64ne_Building_Area", minx, maxx, miny, maxy, {ARRAY [INTEGER_32]}<<>>, 0 );
 
 		     -- labels
-		    plsfci( 0x80000100 );
-		    plschr( 0, 0.8 );
-		    plmaptex( default_pointer, "ss/ss64ne_General_Text", 1.0, 0.0, 0.5, "MARTINHOE CP", minx, maxx, miny, maxy, 202 );
-		    plschr( 0, 0.7 );
-		    plmaptex( default_pointer, "ss/ss64ne_General_Text", 1.0, 0.0, 0.5, "Heale\nDown", minx, maxx, miny, maxy, 13 );
-		    plmaptex( default_pointer, "ss/ss64ne_General_Text", 1.0, 0.0, 0.5, "South\nDown", minx, maxx, miny, maxy, 34 );
-		    plmaptex( default_pointer, "ss/ss64ne_General_Text", 1.0, 0.0, 0.5, "Martinhoe\nCommon", minx, maxx, miny, maxy, 42 );
-		    plmaptex( default_pointer, "ss/ss64ne_General_Text", 1.0, 0.0, 0.5, "Woody Bay", minx, maxx, miny, maxy, 211 );
-		    plschr( 0, 0.6 );
-		    plmaptex( default_pointer, "ss/ss64ne_General_Text", 1.0, 0.0, 0.5, "Mill Wood", minx, maxx, miny, maxy, 16 );
-		    plmaptex( default_pointer, "ss/ss64ne_General_Text", 1.0, 0.0, 0.5, "Heale Wood", minx, maxx, miny, maxy, 17 );
-		    plmaptex( default_pointer, "ss/ss64ne_General_Text", 1.0, 0.0, 1.0, "Bodley", minx, maxx, miny, maxy, 31 );
-		    plmaptex( default_pointer, "ss/ss64ne_General_Text", 1.0, 0.0, 0.0, "Martinhoe", minx, maxx, miny, maxy, 37 );
-		    plmaptex( default_pointer, "ss/ss64ne_General_Text", 1.0, 0.0, 0.5, "Woolhanger\nCommon", minx, maxx, miny, maxy, 60 );
-		    plmaptex( default_pointer, "ss/ss64ne_General_Text", 1.0, 0.0, 0.5, "West Ilkerton\nCommon", minx, maxx, miny, maxy, 61 );
-		    plmaptex( default_pointer, "ss/ss64ne_General_Text", 1.0, 0.0, 0.5, "Caffyns\nHeanton\nDown", minx, maxx, miny, maxy, 62 );
+		    c_plsfci( 0x80000100 );
+		    c_plschr( 0, 0.8 );
+		    c_plmaptex( default_pointer, "ss/ss64ne_General_Text", 1.0, 0.0, 0.5, "MARTINHOE CP", minx, maxx, miny, maxy, 202 );
+		    c_plschr( 0, 0.7 );
+		    c_plmaptex( default_pointer, "ss/ss64ne_General_Text", 1.0, 0.0, 0.5, "Heale\nDown", minx, maxx, miny, maxy, 13 );
+		    c_plmaptex( default_pointer, "ss/ss64ne_General_Text", 1.0, 0.0, 0.5, "South\nDown", minx, maxx, miny, maxy, 34 );
+		    c_plmaptex( default_pointer, "ss/ss64ne_General_Text", 1.0, 0.0, 0.5, "Martinhoe\nCommon", minx, maxx, miny, maxy, 42 );
+		    c_plmaptex( default_pointer, "ss/ss64ne_General_Text", 1.0, 0.0, 0.5, "Woody Bay", minx, maxx, miny, maxy, 211 );
+		    c_plschr( 0, 0.6 );
+		    c_plmaptex( default_pointer, "ss/ss64ne_General_Text", 1.0, 0.0, 0.5, "Mill Wood", minx, maxx, miny, maxy, 16 );
+		    c_plmaptex( default_pointer, "ss/ss64ne_General_Text", 1.0, 0.0, 0.5, "Heale Wood", minx, maxx, miny, maxy, 17 );
+		    c_plmaptex( default_pointer, "ss/ss64ne_General_Text", 1.0, 0.0, 1.0, "Bodley", minx, maxx, miny, maxy, 31 );
+		    c_plmaptex( default_pointer, "ss/ss64ne_General_Text", 1.0, 0.0, 0.0, "Martinhoe", minx, maxx, miny, maxy, 37 );
+		    c_plmaptex( default_pointer, "ss/ss64ne_General_Text", 1.0, 0.0, 0.5, "Woolhanger\nCommon", minx, maxx, miny, maxy, 60 );
+		    c_plmaptex( default_pointer, "ss/ss64ne_General_Text", 1.0, 0.0, 0.5, "West Ilkerton\nCommon", minx, maxx, miny, maxy, 61 );
+		    c_plmaptex( default_pointer, "ss/ss64ne_General_Text", 1.0, 0.0, 0.5, "Caffyns\nHeanton\nDown", minx, maxx, miny, maxy, 62 );
 
 
 

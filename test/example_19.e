@@ -50,28 +50,28 @@ feature {NONE} --Initialization
 			end
 
 			across 0 |..| 3 as  k loop
-		        pladv( 0 );
-		        plvpor( 0.0, 1.0, 0.0, 0.9 );
-		        plwind( -1.0, 1.0, -0.9, 1.1 );
-		        plcol0( 1 );
-		        plw3d( 1.0, 1.0, 1.0, -1.0, 1.0, -1.0, 1.0, -1.0, 1.0, alt[k.item + 1], az[k.item + 1] );
-		        plbox3( "bnstu", "x axis", 0.0, 0,
+		        c_pladv( 0 );
+		        c_plvpor( 0.0, 1.0, 0.0, 0.9 );
+		        c_plwind( -1.0, 1.0, -0.9, 1.1 );
+		        c_plcol0( 1 );
+		        c_plw3d( 1.0, 1.0, 1.0, -1.0, 1.0, -1.0, 1.0, -1.0, 1.0, alt[k.item + 1], az[k.item + 1] );
+		        c_plbox3( "bnstu", "x axis", 0.0, 0,
 		            "bnstu", "y axis", 0.0, 0,
 		            "bcdmnstuv", "z axis", 0.0, 0 );
 
-		        plcol0( 2 );
+		        c_plcol0( 2 );
 
 				if opt [k.item + 1] = 1 then
 					plline3( x, y, z )
 				else
 					plstring3(x, y, z, "." )
 				end
-				plcol0( 3 )
+				c_plcol0( 3 )
 				create title.make_from_string ("#frPLplot Example 18 - Alt=")
 				title.append_double (alt [k.item + 1])
 				title.append (",Az= ")
 				title.append_double (az [k.item + 1])
-				plmtex( "t", 1.0, 0.5, 0.5, title );
+				c_plmtex( "t", 1.0, 0.5, 0.5, title );
 			end
 
 
@@ -97,16 +97,16 @@ feature -- ploting
 			create y.make_filled (0.0, 1, 5)
 			create z.make_filled (0.0, 1, 5)
 
-			pladv( 0 )
-    		plvpor( 0.0, 1.0, 0.0, 0.9 )
-    		plwind( -1.0, 1.0, -0.9, 1.1 )
-    		plcol0( 1 )
-    		plw3d( 1.0, 1.0, 1.0, -1.0, 1.0, -1.0, 1.0, -1.0, 1.0, alt[a_k], az[a_k] )
-    		plbox3( "bnstu", "x axis", 0.0, 0,
+			c_pladv( 0 )
+    		c_plvpor( 0.0, 1.0, 0.0, 0.9 )
+    		c_plwind( -1.0, 1.0, -0.9, 1.1 )
+    		c_plcol0( 1 )
+    		c_plw3d( 1.0, 1.0, 1.0, -1.0, 1.0, -1.0, 1.0, -1.0, 1.0, alt[a_k], az[a_k] )
+    		c_plbox3( "bnstu", "x axis", 0.0, 0,
 		        "bnstu", "y axis", 0.0, 0,
 		        "bcdmnstuv", "z axis", 0.0, 0 )
 
-		    plcol0( 2 )
+		    c_plcol0( 2 )
 
 		    across 0 |..| 19 as i loop
 		    	across 0 |..| 19 as j loop
@@ -135,9 +135,8 @@ feature -- ploting
 		    	end
 		    end
 
-		    plcol0( 3 );
-		    plmtex( "t", 1.0, 0.5, 0.5, "unit radius sphere" );
-
+		    c_plcol0( 3 );
+		    c_plmtex( "t", 1.0, 0.5, 0.5, "unit radius sphere" );
 		end
 
 

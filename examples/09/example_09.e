@@ -131,22 +131,22 @@ feature -- Initialization
 				clevel[i.item + 1] := zmin + step + step * i.item
 			end
 
-			pllightsource( 1.0, 1.0, 1.0 )
+			c_pllightsource( 1.0, 1.0, 1.0 )
 			across 0 |..| 1 as k loop
 				across 0 |..| 4 as ifshade loop
-					pladv( 0 )
-					plvpor( 0.0, 1.0, 0.0, 0.9 )
-					plwind( -1.0, 1.0, -0.9, 1.1 )
-					plcol0( 3 )
-					plmtex( "t", 1.0, 0.5, 0.5, title[k.item + 1] )
-     			    plcol0( 1 )
+					c_pladv( 0 )
+					c_plvpor( 0.0, 1.0, 0.0, 0.9 )
+					c_plwind( -1.0, 1.0, -0.9, 1.1 )
+					c_plcol0( 3 )
+					c_plmtex( "t", 1.0, 0.5, 0.5, title[k.item + 1] )
+     			    c_plcol0( 1 )
 		            if rosen then
-		                plw3d( 1.0, 1.0, 1.0, -1.5, 1.5, -0.5, 1.5, zmin, zmax, alt[k.item + 1], az[k.item + 1] )
+		                c_plw3d( 1.0, 1.0, 1.0, -1.5, 1.5, -0.5, 1.5, zmin, zmax, alt[k.item + 1], az[k.item + 1] )
         		    else
-                		plw3d( 1.0, 1.0, 1.0, -1.0, 1.0, -1.0, 1.0, zmin, zmax, alt[k.item + 1], az[k.item + 1] )
+                		c_plw3d( 1.0, 1.0, 1.0, -1.0, 1.0, -1.0, 1.0, zmin, zmax, alt[k.item + 1], az[k.item + 1] )
 					end
-					plbox3( "bnstu", "x axis", 0.0, 0, "bnstu", "y axis", 0.0, 0, "bcdmnstuv", "z axis", 0.0, 0 )
-					plcol0( 2 )
+					c_plbox3( "bnstu", "x axis", 0.0, 0, "bnstu", "y axis", 0.0, 0, "bcdmnstuv", "z axis", 0.0, 0 )
+					c_plcol0( 2 )
 					inspect ifshade.item
 					when 0 then
 							-- diffuse light surface plot
@@ -255,7 +255,7 @@ feature -- Color Map
 		        s[1] := 0.8
 				s[2] := 0.8
 			end
-			plscmap1n( 256 )
+			c_plscmap1n( 256 )
 			plscmap1l( 0, 2, i, h, l, s, {ARRAY [BOOLEAN]}<<>> )
 		end
 

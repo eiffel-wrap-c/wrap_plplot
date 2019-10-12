@@ -131,9 +131,9 @@ feature -- Plotting
 			min_width := 0.0
 			max_width := 0.0
 
-		    pladv( 0 )
-		    plvpor( 0.1, 0.9, 0.1, 0.9 )
-		    plwind( -1.0, 1.0, -1.0, 1.0 )
+		    c_pladv( 0 )
+		    c_plvpor( 0.1, 0.9, 0.1, 0.9 )
+		    c_plwind( -1.0, 1.0, -1.0, 1.0 )
 
 				-- Plot using identity transform
 
@@ -146,17 +146,17 @@ feature -- Plotting
 		    min_width := 2.;
 		    max_width := 2.;
 
-		    plpsty( 8 )
+		    c_plpsty( 8 )
 		    plshade(zIliffe, XPTS, YPTS, default_pointer, -1., 1., -1., 1.,
 		        shade_min, shade_max,
 		        sh_cmap, sh_color, sh_width,
 		        min_color, min_width, max_color, max_width,
 		        plfill_address, 1, default_pointer, default_pointer)
 
-		    plcol0( 1 )
-		    plbox( "bcnst", 0.0, 0, "bcnstv", 0.0, 0 )
-		    plcol0( 2 )
-		    pllab( "distance", "altitude", "Bogon flux" )
+		    c_plcol0( 1 )
+		    c_plbox( "bcnst", 0.0, 0, "bcnstv", 0.0, 0 )
+		    c_plcol0( 2 )
+		    c_pllab( "distance", "altitude", "Bogon flux" )
 		end
 
 
@@ -189,9 +189,9 @@ feature -- Plotting
 					                                << 4000, 2000 >> >>
 
 			sh_width := 2.0
-			pladv( 0 )
-			plvpor( 0.1, 0.9, 0.1, 0.9 )
-			plwind( -1.0, 1.0, -1.0, 1.0 )
+			c_pladv( 0 )
+			c_plvpor( 0.1, 0.9, 0.1, 0.9 )
+			c_plwind( -1.0, 1.0, -1.0, 1.0 )
 
 				-- plot using identity transform
 			across 0 |..| 9 as i loop
@@ -206,10 +206,10 @@ feature -- Plotting
 			            min_color, min_width, max_color, max_width,
 			            plfill_address, 1, default_pointer, default_pointer )
 			end
-			plcol0( 1 )
-			plbox( "bcnst", 0.0, 0, "bcnstv", 0.0, 0 )
-			plcol0( 2 )
-			pllab( "distance", "altitude", "Bogon flux" )
+			c_plcol0( 1 )
+			c_plbox( "bcnst", 0.0, 0, "bcnstv", 0.0, 0 )
+			c_plcol0( 2 )
+			c_pllab( "distance", "altitude", "Bogon flux" )
 		end
 
 
@@ -229,23 +229,23 @@ feature -- Plotting
     	 	zz := << << 0.0, 0.0, 1.0, 1.0, 0.0 >>,
                               << 0.0, 0.0, 1.0, 1.0, 0.0 >> >>
 
-			pladv( 0 )
-			plvpor( 0.1, 0.9, 0.1, 0.9 );
-			plwind( -1.0, 1.0, -1.0, 1.0 );
-			plw3d( 1., 1., 1., -1.0, 1.0, -1.0, 1.0, 0.0, 1.5, 30, -40 )
+			c_pladv( 0 )
+			c_plvpor( 0.1, 0.9, 0.1, 0.9 );
+			c_plwind( -1.0, 1.0, -1.0, 1.0 );
+			c_plw3d( 1., 1., 1., -1.0, 1.0, -1.0, 1.0, 0.0, 1.5, 30, -40 )
 
 				-- Plot using identity transform
 
-		    plcol0( 1 );
-		    plbox3( "bntu", "X", 0.0, 0, "bntu", "Y", 0.0, 0, "bcdfntu", "Z", 0.5, 0 )
-		    plcol0( 2 )
-		    pllab( "", "", "3-d polygon filling" )
+		    c_plcol0( 1 );
+		    c_plbox3( "bntu", "X", 0.0, 0, "bntu", "Y", 0.0, 0, "bcdfntu", "Z", 0.5, 0 )
+		    c_plcol0( 2 )
+		    c_pllab( "", "", "3-d polygon filling" )
 
-		    plcol0( 3 )
-		    plpsty( 1 )
+		    c_plcol0( 3 )
+		    c_plpsty( 1 )
 		    plline3( xx[1], yy[1], zz[1] )
 		    plfill3(xx[1], yy[1], zz[1] )
-		    plpsty( 2 );
+		    c_plpsty( 2 );
 		    plline3( xx[2], yy[2], zz[2] )
 		    plfill3( xx[2], yy[2], zz[2] )
 		end

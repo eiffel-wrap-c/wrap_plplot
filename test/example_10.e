@@ -77,30 +77,30 @@ feature -- Initialization
 
 				-- Plot using identity transform
 			create l_dispatcher.make (agent on_callback)
-			pl_setcontlabelformat( 4, 3 )
-			pl_setcontlabelparam( 0.006, 0.3, 0.1, 1 )
-			plenv( -1.0, 1.0, -1.0, 1.0, 0, 0 )
-			plcol0( 2 )
+			c_pl_setcontlabelformat( 4, 3 )
+			c_pl_setcontlabelparam( 0.006, 0.3, 0.1, 1 )
+			c_plenv( -1.0, 1.0, -1.0, 1.0, 0, 0 )
+			c_plcol0( 2 )
 			plcont( z, XPTS, YPTS, 1, XPTS, 1, YPTS, clevel, 11, l_dispatcher.c_dispatcher, default_pointer )
-			plstyl( 1, $mark, $space )
-			plcol0( 3 )
+			c_plstyl( 1, $mark, $space )
+			c_plcol0( 3 )
 			plcont( w, XPTS, YPTS, 1, XPTS, 1, YPTS, clevel, 11, l_dispatcher.c_dispatcher, default_pointer )
-			plstyl( 0, $mark, $space );
-			plcol0( 1 );
-			pllab( "X Coordinate", "Y Coordinate", "Streamlines of flow" )
-			pl_setcontlabelparam( 0.006, 0.3, 0.1, 0 )
+			c_plstyl( 0, $mark, $space );
+			c_plcol0( 1 );
+			c_pllab( "X Coordinate", "Y Coordinate", "Streamlines of flow" )
+			c_pl_setcontlabelparam( 0.006, 0.3, 0.1, 0 )
 
 				-- Plot using 1d coordinate transform
 
-		    plenv( -1.0, 1.0, -1.0, 1.0, 0, 0 )
-		    plcol0( 2 )
+		    c_plenv( -1.0, 1.0, -1.0, 1.0, 0, 0 )
+		    c_plcol0( 2 )
 		    plcont( z, XPTS, YPTS, 1, XPTS, 1, YPTS, clevel, 11, pltr1_address, cgrid1.pointer )
-		    plstyl( 1, $mark, $space )
-		    plcol0( 3 )
+		    c_plstyl( 1, $mark, $space )
+		    c_plcol0( 3 )
 		    plcont( w, XPTS, YPTS, 1, XPTS, 1, YPTS, clevel, 11, pltr1_address, cgrid1.pointer )
-		    plstyl( 0, $mark, $space )
-		    plcol0( 1 )
-		    pllab( "X Coordinate", "Y Coordinate", "Streamlines of flow" )
+		    c_plstyl( 0, $mark, $space )
+		    c_plcol0( 1 )
+		    c_pllab( "X Coordinate", "Y Coordinate", "Streamlines of flow" )
 
 		 		-- Plot using 2d coordinate transform
 
@@ -114,9 +114,9 @@ feature -- Initialization
 --		    plcol0( 1 )
 --		    pllab( "X Coordinate", "Y Coordinate", "Streamlines of flow" )
 
-		    pl_setcontlabelparam( 0.006, 0.3, 0.1, 0 )
+		    c_pl_setcontlabelparam( 0.006, 0.3, 0.1, 0 )
 		    polar
-			pl_setcontlabelparam( 0.006, 0.3, 0.1, 0 )
+			c_pl_setcontlabelparam( 0.006, 0.3, 0.1, 0 )
 			potential
 
 				--// Clean up
@@ -200,8 +200,8 @@ feature -- Transformation function
 			create px.make_filled (0.0, 1, PERIMETERPTS)
 			create py.make_filled (0.0, 1, PERIMETERPTS)
 
-			plenv( -1.0, 1.0, -1.0, 1.0, 0, -2 )
-    		plcol0( 1 )
+			c_plenv( -1.0, 1.0, -1.0, 1.0, 0, -2 )
+    		c_plcol0( 1 )
 
 				-- Perimeter
 			across 0 |..| (PERIMETERPTS - 1) as i loop
@@ -228,10 +228,10 @@ feature -- Transformation function
 			across  0 |..| 9 as i loop
 				lev[i.item + 1] := 0.05 + 0.10 *  i.item;
 			end
-			
+
 			plcont( z, RPTS, THETAPTS, 1, RPTS, 1, THETAPTS, lev, 10, pltr2_address, cgrid2.pointer );
-		    plcol0( 1 )
-		    pllab( "", "", "Polar Contour Plot" );
+		    c_plcol0( 1 )
+		    c_pllab( "", "", "Polar Contour Plot" );
 		    z.clean
 		    cgrid2.xg.clean
 		    cgrid2.yg.clean
@@ -362,24 +362,24 @@ feature -- Transformation function
 			ncollab := 2
 
 				-- Finally start plotting this page!
-			pladv( 0 )
-			plcol0( ncolbox )
+			c_pladv( 0 )
+			c_plcol0( ncolbox )
 
-			plvpas( 0.1, 0.9, 0.1, 0.9, 1.0 )
-			plwind( xpmin, xpmax, ypmin, ypmax )
-			plbox( "", 0.0, 0, "", 0.0, 0 );
+			c_plvpas( 0.1, 0.9, 0.1, 0.9, 1.0 )
+			c_plwind( xpmin, xpmax, ypmin, ypmax )
+			c_plbox( "", 0.0, 0, "", 0.0, 0 );
 
-			plcol0( ncollin )
+			c_plcol0( ncollin )
 
 			if nlevelneg > 0 then
 					-- Negative contours
-				pllsty( 2 )
+				c_pllsty( 2 )
 		        plcont( z, PRPTS, PTHETAPTS, 1, PRPTS, 1, PTHETAPTS, clevelneg, nlevelneg, pltr2_address, cgrid2.pointer)
 			end
 
 		    if  nlevelpos > 0 then
 		        	-- Positive contours
-		        pllsty( 1 )
+		        c_pllsty( 1 )
 		        plcont( z, PRPTS, PTHETAPTS, 1, PRPTS, 1, PTHETAPTS, clevelpos, nlevelpos, pltr2_address, cgrid2.pointer )
 		    end
 
@@ -395,11 +395,11 @@ feature -- Transformation function
 			end
 
 
-		    plcol0( ncolbox )
+		    c_plcol0( ncolbox )
 		    plline( px, py )
 
-		    plcol0( ncollab );
-		    pllab( "", "", "Shielded potential of charges in a conducting sphere" )
+		    c_plcol0( ncollab );
+		    c_pllab( "", "", "Shielded potential of charges in a conducting sphere" )
 
 		    z.clean
 		    cgrid2.xg.clean

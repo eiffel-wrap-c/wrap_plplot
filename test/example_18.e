@@ -99,8 +99,8 @@ feature -- Initialization
 
     		initialize
 
-		    pladv( 0 )
-		    plvsta
+		    c_pladv( 0 )
+		    c_plvsta
 
 				-- Register our error variables with PLplot
 				-- From here on, we're handling all errors here
@@ -140,7 +140,7 @@ feature -- Initialization
 				{EXECUTION_ENVIRONMENT}.sleep (1000000)
 
 	        	t     := (nc.item * dt)
-				noise := plrandd - 0.5
+				noise := c_plrandd - 0.5
 	 			y1    := y1 + noise
 				y2    := {DOUBLE_MATH}.sine( t * {DOUBLE_MATH}.pi / 18. )
 	        	y3    := y2 * noise
@@ -150,22 +150,22 @@ feature -- Initialization
 	        		-- points or beeing equally time spaced.
 
 		        if ( nc.item \\ 2) /= 0  then
-		            plstripa( id1, 0, t, y1 )
+		            c_plstripa( id1, 0, t, y1 )
 		        end
 		        if ( nc.item \\ 3) /= 0  then
-		            plstripa( id1, 1, t, y2 )
+		            c_plstripa( id1, 1, t, y2 )
 		        end
 		        if ( nc.item \\ 4) /= 0  then
-		            plstripa( id1, 2, t, y3 )
+		            c_plstripa( id1, 2, t, y3 )
 		        end
 		        if ( nc.item \\ 5) /= 0  then
-		            plstripa( id1, 3, t, y4 );
+		            c_plstripa( id1, 3, t, y4 );
 				end
 			end
 			-- needed if using double buffering (-db on command line)
 			-- pleop();
 
-   			plstripd( id1 )
+   			c_plstripd( id1 )
 			finalize
 
 		end

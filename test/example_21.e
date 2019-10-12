@@ -53,7 +53,7 @@ feature {NONE} --Initialization
 
 		   		--  view image border pixels
 		    if dbg then
-		        plenv( 1.,XDIM, 1., YDIM, 1, 1 ); -- no plot box
+		        c_plenv( 1.,XDIM, 1., YDIM, 1, 1 ); -- no plot box
 
 		        	--  build a one pixel square border, for diagnostics
 
@@ -73,7 +73,7 @@ feature {NONE} --Initialization
 		        	z[XDIM - 1, i.item] := 1. -- botton
 		        end
 
-		        pllab( "...around a blue square.", " ", "A red border should appear..." )
+		        c_pllab( "...around a blue square.", " ", "A red border should appear..." )
 
 		        plimage( z, XDIM, YDIM,
 		            1.,  XDIM, 1.,  YDIM, 0., 0.,
@@ -83,8 +83,8 @@ feature {NONE} --Initialization
 				--	sombrero-like demo
 		    if  not nosombrero then
 		    	create r.make ( XDIM, YDIM )
-		        plcol0( 2 ) --draw a yellow plot box, useful for diagnostics! :(
-		        plenv( 0., 2. * {DOUBLE_MATH}.pi, 0, 3. * {DOUBLE_MATH}.pi, 1, -1 )
+		        c_plcol0( 2 ) --draw a yellow plot box, useful for diagnostics! :(
+		        c_plenv( 0., 2. * {DOUBLE_MATH}.pi, 0, 3. * {DOUBLE_MATH}.pi, 1, -1 )
 
 				create x.make_filled (0.0, 1, XDIM)
 		        across 0 |..| (XDIM-1) as i  loop
@@ -103,8 +103,8 @@ feature {NONE} --Initialization
 					end
 				end
 
-		        pllab( "No, an amplitude clipped %"sombrero%"", "", "Saturn?" )
-		        plptex( 2., 2., 3., 4., 0., "Transparent image" );
+		        c_pllab( "No, an amplitude clipped %"sombrero%"", "", "Saturn?" )
+		        c_plptex( 2., 2., 3., 4., 0., "Transparent image" );
 		        plimage( z, XDIM, YDIM, 0., 2. * {DOUBLE_MATH}.pi, 0., 3. * {DOUBLE_MATH}.pi, 0.05, 1.,
 		            0., 2. * {DOUBLE_MATH}.pi, 0., 3. * {DOUBLE_MATH}.pi )
 		        r.clean
@@ -181,17 +181,17 @@ feature -- Save plot
 		local
 			cur_strm, new_strm: INTEGER
 		do
-		    plgstrm( $cur_strm )    -- get current stream
-		    plmkstrm( $new_strm )   -- create a new one
+		    c_plgstrm( $cur_strm )    -- get current stream
+		    c_plmkstrm( $new_strm )   -- create a new one
 
-		    plsdev( "psc" )	         -- new device type. Use a known existing driver
-		    plsfnam( fname )		 -- file name
+		    c_plsdev( "psc" )	         -- new device type. Use a known existing driver
+		    c_plsfnam( fname )		 -- file name
 
-		    plcpstrm( cur_strm, 0 )  -- copy old stream parameters to new stream
-		    plreplot              	 -- do the save
-		    plend1                	 -- close new device
+		    c_plcpstrm( cur_strm, 0 )  -- copy old stream parameters to new stream
+		    c_plreplot              	 -- do the save
+		    c_plend1                	 -- close new device
 
-		    plsstrm( cur_strm );     -- and return to previous one
+		    c_plsstrm( cur_strm );     -- and return to previous one
 		end
 
 

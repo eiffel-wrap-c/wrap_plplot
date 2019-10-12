@@ -22,6 +22,12 @@
 				<platform value="windows"/>
 			</condition>
 		</external_include>
+		<external_include location="$ECF_CONFIG_PATH/C/include">
+			<condition>
+				<platform value="windows"/>
+			</condition>
+		</external_include>
+
 
 		<external_cflag value="`pkg-config --cflags plplot`">
 			<condition>
@@ -29,11 +35,6 @@
 			</condition>
 		</external_cflag>
 		
-		<!--<external_include location="$ECF_CONFIG_PATH/C/include">
-			<condition>
-				<platform excluded_value="windows"/>
-			</condition>
-		</external_include> -->
 		
 		<external_object location="$ECF_CONFIG_PATH/C/spec/$ISE_C_COMPILER/$ISE_PLATFORM/lib/eif_plplot.lib">
 			<condition>

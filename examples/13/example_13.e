@@ -38,12 +38,12 @@ feature -- Initialization
 				-- Initialize plplot
 			initialize
 
-		    pladv( 0 )
-		    plvsta
-		    plwind( 1980.0, 1990.0, 0.0, 35.0 )
-		    plbox( "bc", 1.0, 0, "bcnv", 10.0, 0 )
-		    plcol0( 2 )
-		    pllab( "Year", "Widget Sales (millions)", "#frPLplot Example 12" )
+		    c_pladv( 0 )
+		    c_plvsta
+		    c_plwind( 1980.0, 1990.0, 0.0, 35.0 )
+		    c_plbox( "bc", 1.0, 0, "bcnv", 10.0, 0 )
+		    c_plcol0( 2 )
+		    c_pllab( "Year", "Widget Sales (millions)", "#frPLplot Example 12" )
 
 		    y0[1] := 5
 		    y0[2] := 15
@@ -59,13 +59,13 @@ feature -- Initialization
 		    plscmap1l( 1, 5, pos, red, green, blue, {ARRAY [BOOLEAN]}<<>> )
 
 		    across 0 |..| 9 as i loop
-		        plcol1( i.item / 9.0 )
-		        plpsty( 0 )
+		        c_plcol1( i.item / 9.0 )
+		        c_plpsty( 0 )
 		        plfbox( ( 1980. + i.item ), y0[i.item + 1] )
 		        create string.make_from_string ( (y0[i.item + 1]).out)
-		        plptex( ( 1980. + i.item + .5 ), ( y0[i.item + 1] + 1. ), 1.0, 0.0, .5, string )
+		        c_plptex( ( 1980. + i.item + .5 ), ( y0[i.item + 1] + 1. ), 1.0, 0.0, .5, string )
 		       	create string.make_from_string ((1990 + i.item).out)
-		        plmtex( "b", 1.0, ( ( i.item + 1 ) * .1 - .05 ), 0.5, string )
+		        c_plmtex( "b", 1.0, ( ( i.item + 1 ) * .1 - .05 ), 0.5, string )
 		    end
 			finalize
 		end
@@ -89,8 +89,8 @@ feature -- Access
 		    x[4] := x0 + 1.0
 		    y[4] := 0.0
 		    plfill( x, y )
-		    plcol0( 1 )
-		    pllsty( 1 )
+		    c_plcol0( 1 )
+		    c_pllsty( 1 )
 		    plline( x, y )
 		end
 end

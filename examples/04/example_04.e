@@ -41,26 +41,26 @@ feature -- Initialization
 
 			-- Set orientation to portrait - note not all device drivers
 			-- support this, in particular most interactive drivers do not
-    		plsori( 1 )
+    		c_plsori( 1 )
 
 			-- Initialize plplot
 
 			initialize
 			-- Set up viewport and window, but do not draw box			
-			plenv( -1.3, 1.3, -1.3, 1.3, 1, -2 );
+			c_plenv( -1.3, 1.3, -1.3, 1.3, 1, -2 );
 			-- Draw circles for polar grid
 			across 1 |..| 10 as  ic loop
-				plarc( 0.0, 0.0, 0.1 * ic.item, 0.1 * ic.item, 0.0, 360.0, 0.0, 0 );
+				c_plarc( 0.0, 0.0, 0.1 * ic.item, 0.1 * ic.item, 0.0, 360.0, 0.0, 0 );
     		end
 
-    		plcol0 (2)
+    		c_plcol0 (2)
     		across 0 |..| 11 as ic loop
 				theta := 30.0 * ic.item
 				dx := {DOUBLE_MATH}.cosine( dtr * theta )
 				dy := {DOUBLE_MATH}.sine( dtr * theta )
 
 				-- Draw radial spokes for polar grid
-				 pljoin( 0.0, 0.0, dx, dy );
+				c_pljoin( 0.0, 0.0, dx, dy );
 				create text.make_from_string (theta.rounded.out)
 				-- Write labels for angle
 
@@ -73,9 +73,9 @@ feature -- Initialization
        			end
 				-- Slightly off zero to avoid floating point logic flips at 90 and 270 deg.
         		if ( dx >= -0.00001 ) then
-					plptex( dx, dy, dx, dy, -offset, text )
+					c_plptex( dx, dy, dx, dy, -offset, text )
         		else
-					plptex( dx, dy, -dx, -dy, 1. + offset, text )
+					c_plptex( dx, dy, -dx, -dy, 1. + offset, text )
             	end
     		end
 			--Draw the graph
@@ -85,11 +85,11 @@ feature -- Initialization
 				x[ic.item + 1] := x0[ic.item + 1] * r
 				y[ic.item + 1] := y0[ic.item + 1] * r;
 			end
-			plcol0( 3 )
+			c_plcol0( 3 )
 			plline( x, y )
 
-			plcol0( 4 );
-			plmtex( "t", 2.0, 0.5, 0.5, "#frPLplot Example 3 - r(#gh)=sin 5#gh" );
+			c_plcol0( 4 );
+			c_plmtex( "t", 2.0, 0.5, 0.5, "#frPLplot Example 3 - r(#gh)=sin 5#gh" );
 
 
 			-- Close the plot at end

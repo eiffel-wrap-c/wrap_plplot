@@ -22,6 +22,6 @@ feature
 		do
 			initialize
 			create driver.make_empty
-			plgdev (driver)
+			c_plgdev (driver)
 		end
 end

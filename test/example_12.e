@@ -71,14 +71,14 @@ feature -- Initialization
 
 			across 0 |..| 1 as k  loop
 				across 0 |..| 3 as i loop
-		            pladv( 0 )
-        		    plcol0( 1 )
-            		plvpor( 0.0, 1.0, 0.0, 0.9 )
-            		plwind( -1.0, 1.0, -1.0, 1.5 )
-           	 		plw3d( 1.0, 1.0, 1.2, -3.0, 3.0, -3.0, 3.0, zmin, zmax, alt[k.item + 1], az[k.item + 1] )
-           			plbox3( "bnstu", "x axis", 0.0, 0, "bnstu", "y axis", 0.0, 0,"bcdmnstuv", "z axis", 0.0, 4 )
+		            c_pladv( 0 )
+        		    c_plcol0( 1 )
+            		c_plvpor( 0.0, 1.0, 0.0, 0.9 )
+            		c_plwind( -1.0, 1.0, -1.0, 1.5 )
+           	 		c_plw3d( 1.0, 1.0, 1.2, -3.0, 3.0, -3.0, 3.0, zmin, zmax, alt[k.item + 1], az[k.item + 1] )
+           			c_plbox3( "bnstu", "x axis", 0.0, 0, "bnstu", "y axis", 0.0, 0,"bcdmnstuv", "z axis", 0.0, 4 )
 
-					plcol0( 2 )
+					c_plcol0( 2 )
 
 
 					inspect i.item
@@ -95,8 +95,8 @@ feature -- Initialization
 							--  magnitude colored wireframe plot with base contour
 						plmeshc( x, y, z, XPTS, YPTS,( opt[k.item + 1] | {PLPLOT_CONSTANTS}.MAG_COLOR )| {PLPLOT_CONSTANTS}.BASE_CONT, clevel, nlevel );
 					end
-					plcol0( 3 );
-            		plmtex( "t", 1.0, 0.5, 0.5, title[k.item + 1] )
+					c_plcol0( 3 );
+            		c_plmtex( "t", 1.0, 0.5, 0.5, title[k.item + 1] )
 
 				end
 			end
@@ -127,7 +127,7 @@ feature -- Initialization
 		    s[1] := 0.8
 		    s[2] := 0.8
 
-		    plscmap1n( 256 )
+		    c_plscmap1n( 256 )
 		    plscmap1l( 0, 2, i, h, l, s, {ARRAY [BOOLEAN]}<<False, False>> )
 		end
 
