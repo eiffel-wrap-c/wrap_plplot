@@ -37,13 +37,13 @@ feature -- Demos
 	demo1
 			-- Demonstrates multiple windows and default color map 0 palette.
 		do
-			plbop
+			c_plbop
 				-- Divide screen into 16 regions
-   			plssub( 4, 4 )
+   			c_plssub( 4, 4 )
 
 			draw_windows( 16, 0 )
 
-			pleop
+			c_pleop
 
 		end
 
@@ -67,10 +67,10 @@ feature -- Demos
 			lmin := 0.15
 			lmax := 0.85
 
-			plbop
+			c_plbop
 
 				-- Divide screen  into 100 regions
-			plssub (10, 10)
+			c_plssub (10, 10)
 
 			across 0 |..| 99 as  ic loop
 				-- Bounds on HLS, from plhlsrgb() commentary --
@@ -84,7 +84,7 @@ feature -- Demos
         		l := lmin + ( lmax - lmin ) * ( ic.item / 10 ) / 9.0
         		-- Use max saturation
 				s := 1.0
-				plhlsrgb( h, l, s, $r1, $g1, $b1 );
+				c_plhlsrgb( h, l, s, $r1, $g1, $b1 );
 				-- Use 255.001 to avoid close truncation decisions in this example.
 				r[(ic.item + 1) + 16] :=( r1 * 255.001 ).truncated_to_integer
 				g[(ic.item + 1) + 16] := ( g1 * 255.001 ).truncated_to_integer
@@ -93,7 +93,7 @@ feature -- Demos
 
 				-- Load default cmap0 colors into our custom set
 			across 0 |..| 15 as ic  loop
-				plgcol0( ic.item + 1, $r2, $g2, $b2 );
+				c_plgcol0( ic.item + 1, $r2, $g2, $b2 );
 				r[ic.item  + 1] := r2
 				g[ic.item  + 1] := g2
 				b[ic.item  + 1] := b2
@@ -103,7 +103,7 @@ feature -- Demos
 
     		draw_windows( 100, 16 )
 
-    		pleop
+    		c_pleop
 		end
 
 
@@ -113,26 +113,26 @@ feature -- Demos
 			vmin, vmax: REAL_64
 			text: STRING
 		do
-			plschr( 0.0, 3.5 )
-			plfont( 4 )
+			c_plschr( 0.0, 3.5 )
+			c_plfont( 4 )
 			across 0 |..| (nw-1)  as ic
 			loop
 				create text.make_from_string (ic.item.out)
-				plcol0( ic.item + cmap0_offset )
-				pladv( 0 )
+				c_plcol0( ic.item + cmap0_offset )
+				c_pladv( 0 )
 				vmin := 0.1
 				vmax := 0.9
 				across 0 |..| 2  as jc
 				loop
-					plwidth( jc.item + 1 )
-					plvpor( vmin, vmax, vmin, vmax )
-					plwind( 0.0, 1.0, 0.0, 1.0 );
-					plbox( "bc", 0.0, 0, "bc", 0.0, 0 );
+					c_plwidth( jc.item + 1 )
+					c_plvpor( vmin, vmax, vmin, vmax )
+					c_plwind( 0.0, 1.0, 0.0, 1.0 );
+					c_plbox( "bc", 0.0, 0, "bc", 0.0, 0 );
 					vmin := vmin + 0.1
 					vmax := vmax - 0.1
 				end
-				plwidth( 1 )
-				plptex( 0.5, 0.5, 1.0, 0.0, 0.5, text )
+				c_plwidth( 1 )
+				c_plptex( 0.5, 0.5, 1.0, 0.0, 0.5, text )
 			end
 		end
 end

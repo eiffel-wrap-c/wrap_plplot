@@ -30,37 +30,37 @@ feature -- Initialization
 			initialize
 
 			across 0 |..| 1 as  ic loop
-				plfont (ic.item)
+				c_plfont (ic.item)
 				if ic.item = 0 then
 					maxfont := 1
 				else
 					maxfont := 4
 				end
 				across 0 |..| (maxfont - 1) as f loop
-					plfont (f.item + 1)
-					pladv (0)
+					c_plfont (f.item + 1)
+					c_pladv (0)
 
 					-- Set up viewport and window
-		            plcol0( 2 );
-        		    plvpor( 0.1, 1.0, 0.1, 0.9 )
-					plwind( 0.0, 1.0, 0.0, 1.3 )
+		            c_plcol0( 2 );
+        		    c_plvpor( 0.1, 1.0, 0.1, 0.9 )
+					c_plwind( 0.0, 1.0, 0.0, 1.3 )
 
 					-- Draw the grid using plbox
-			        plbox( "bcg", 0.1, 0, "bcg", 0.1, 0 )
+			        c_plbox( "bcg", 0.1, 0, "bcg", 0.1, 0 )
 
 					--	Write the digits below the frame
-					plcol0 (15)
+					c_plcol0 (15)
 					across 0 |..| 9 as i loop
 						create text.make (10)
 						text.append (i.item.out)
-						plmtex( "b", 1.5, ( 0.1 * i.item + 0.05 ), 0.5, text )
+						c_plmtex( "b", 1.5, ( 0.1 * i.item + 0.05 ), 0.5, text )
 					end
 					k := 0
 					across 0 |..| 12 as i loop
 						-- Write the digits to the left of the frame	
 						create text.make (10)
 						text.append ((10*i.item).out)
-						plmtex( "lv", 1.0, ( 1.0 - ( 2 * i.item + 1 ) / 26.0 ), 1.0, text )
+						c_plmtex( "lv", 1.0, ( 1.0 - ( 2 * i.item + 1 ) / 26.0 ), 1.0, text )
 						across 0 |..| 9 as j loop
 							x := 0.1 * j.item + 0.05;
 							y := 1.25 - 0.1 * i.item;
@@ -75,9 +75,9 @@ feature -- Initialization
 					end
 
 					if ic.item  = 0then
-						plmtex( "t", 1.5, 0.5, 0.5, "PLplot Example 6 - plpoin symbols (compact)" )
+						c_plmtex( "t", 1.5, 0.5, 0.5, "PLplot Example 6 - plpoin symbols (compact)" )
 					else
-						plmtex( "t", 1.5, 0.5, 0.5, "PLplot Example 6 - plpoin symbols (extended)" )
+						c_plmtex( "t", 1.5, 0.5, 0.5, "PLplot Example 6 - plpoin symbols (extended)" )
 					end
 				end
 			end

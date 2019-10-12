@@ -52,11 +52,11 @@ feature -- Initialization
 			labels := <<"Magnitude">>
 
 				-- Load colour palettes
-    		plspal0( "cmap0_black_on_white.pal" )
-    		plspal1( "cmap1_gray.pal", 1 )
+    		c_plspal0( "cmap0_black_on_white.pal" )
+    		c_plspal1( "cmap1_gray.pal", 1 )
 
 				-- Reduce colors in cmap 0 so that cmap 1 is useful on a 16-color display
-    		plscmap0n( 3 );
+    		c_plscmap0n( 3 );
 
 				-- Initialize plplot
 
@@ -131,11 +131,11 @@ feature -- Initialization
 			end
 			-- Plot using identity transform
 
-		    pladv( 0 )
-		    plvpor( 0.1, 0.9, 0.1, 0.9 )
-		    plwind( -1.0, 1.0, -1.0, 1.0 )
+		    c_pladv( 0 )
+		    c_plvpor( 0.1, 0.9, 0.1, 0.9 )
+		    c_plwind( -1.0, 1.0, -1.0, 1.0 )
 
-		    plpsty( 0 )
+		    c_plpsty( 0 )
 
 		    plshades( z, nx, ny, default_pointer, -1., 1., -1., 1.,
         		shedge, ns + 1, fill_width,
@@ -146,10 +146,10 @@ feature -- Initialization
 			create values.make_filled (default_pointer, 1, 1)
 			if  colorbar = 1 then
 					-- Smaller text
-				plschr( 0.0, 0.75 )
+				c_plschr( 0.0, 0.75 )
 					-- Small ticks on the vertical axis
-				plsmaj( 0.0, 0.5 )
-				plsmin( 0.0, 0.5 )
+				c_plsmaj( 0.0, 0.5 )
+				c_plsmin( 0.0, 0.5 )
 
 				num_values[1] := ns + 1;
 				values[1]     := shedge.area.base_address
@@ -162,31 +162,31 @@ feature -- Initialization
             			num_values, values.area.base_address )
 
  		       		-- Reset text and tick sizes
-       			plschr( 0.0, 1.0 )
-       			plsmaj( 0.0, 1.0 )
-        		plsmin( 0.0, 1.0 )
+       			c_plschr( 0.0, 1.0 )
+       			c_plsmaj( 0.0, 1.0 )
+        		c_plsmin( 0.0, 1.0 )
        		end
 
-			plcol0( 1 )
-			plbox( "bcnst", 0.0, 0, "bcnstv", 0.0, 0 );
-			plcol0( 2 );
+			c_plcol0( 1 )
+			c_plbox( "bcnst", 0.0, 0, "bcnstv", 0.0, 0 );
+			c_plcol0( 2 );
 			plcont( w, nx, ny, 1, nx, 1, ny, clevel, ns, pltr2_address, cgrid2.pointer )
 
-		    pllab( "distance", "altitude", "Bogon density, with streamlines" )
+		    c_pllab( "distance", "altitude", "Bogon density, with streamlines" )
 
 				-- Plot using 2d coordinate transform
 
 				-- Load colour palettes
-		    plspal0( "" );
-    		plspal1( "", 1 );
+		    c_plspal0( "" );
+    		c_plspal1( "", 1 );
 				-- Reduce colors in cmap 0 so that cmap 1 is useful on a 16-color display
-    		plscmap0n( 3 );
+    		c_plscmap0n( 3 );
 
-		    pladv( 0 );
-		    plvpor( 0.1, 0.9, 0.1, 0.9 );
-		    plwind( -1.0, 1.0, -1.0, 1.0 );
+		    c_pladv( 0 );
+		    c_plvpor( 0.1, 0.9, 0.1, 0.9 );
+		    c_plwind( -1.0, 1.0, -1.0, 1.0 );
 
-		    plpsty( 0 );
+		    c_plpsty( 0 );
 
 		    plshades( z, nx, ny, default_pointer, -1., 1., -1., 1.,
 		        shedge, ns + 1, fill_width,
@@ -195,10 +195,10 @@ feature -- Initialization
 
 			if  colorbar = 1 then
 		        	-- Smaller text
-		        plschr( 0.0, 0.75 )
+		        c_plschr( 0.0, 0.75 )
 					-- Small ticks on the vertical axis
-		        plsmaj( 0.0, 0.5 )
-		        plsmin( 0.0, 0.5 )
+		        c_plsmaj( 0.0, 0.5 )
+		        c_plsmin( 0.0, 0.5 )
 
 		        num_values[1] := ns + 1;
 		        values[1]     := shedge.area.base_address
@@ -212,17 +212,17 @@ feature -- Initialization
 		            num_values, values.area.base_address )
 
 		        	-- Reset text and tick sizes
-		        plschr( 0.0, 1.0 )
-		        plsmaj( 0.0, 1.0 )
-		        plsmin( 0.0, 1.0 )
+		        c_plschr( 0.0, 1.0 )
+		        c_plsmaj( 0.0, 1.0 )
+		        c_plsmin( 0.0, 1.0 )
 			end
 
-  			plcol0( 1 )
-    		plbox( "bcnst", 0.0, 0, "bcnstv", 0.0, 0 )
-   			plcol0( 2 )
+  			c_plcol0( 1 )
+    		c_plbox( "bcnst", 0.0, 0, "bcnstv", 0.0, 0 )
+   			c_plcol0( 2 )
 				--plcont((const PLFLT **) w, nx, ny, 1, nx, 1, ny, clevel, ns, pltr2, (void *) &cgrid2)
 
-			pllab( "distance", "altitude", "Bogon density" )
+			c_pllab( "distance", "altitude", "Bogon density" )
 
 				-- Note this exclusion API will probably change.
 
@@ -232,16 +232,16 @@ feature -- Initialization
 --				set_callback
 				create l_pldefined.make (agent zdefined)
 					 -- Load colour palettes
-        		plspal0( "cmap0_black_on_white.pal" );
-        		plspal1( "cmap1_gray.pal", 1 );
+        		c_plspal0( "cmap0_black_on_white.pal" );
+        		c_plspal1( "cmap1_gray.pal", 1 );
 					 -- Reduce colors in cmap 0 so that cmap 1 is useful on a 16-color display
-      		  	plscmap0n( 3 )
+      		  	c_plscmap0n( 3 )
 
-  				pladv( 0 )
-				plvpor( 0.1, 0.9, 0.1, 0.9 )
-				plwind( -1.0, 1.0, -1.0, 1.0 )
+  				c_pladv( 0 )
+				c_plvpor( 0.1, 0.9, 0.1, 0.9 )
+				c_plwind( -1.0, 1.0, -1.0, 1.0 )
 
-				plpsty( 0 )
+				c_plpsty( 0 )
 
 --		        plshades(z, nx, ny, l_pldefined.c_dispatcher, -1., 1., -1., 1.,
 --		            shedge, ns + 1, fill_width,
@@ -252,26 +252,26 @@ feature -- Initialization
 		            cont_color, cont_width,
 		            plfill_address, 0, pltr2_address, cgrid2)
 
-				plcol0( 1 )
-				plbox( "bcnst", 0.0, 0, "bcnstv", 0.0, 0 )
+				c_plcol0( 1 )
+				c_plbox( "bcnst", 0.0, 0, "bcnstv", 0.0, 0 )
 
-				pllab( "distance", "altitude", "Bogon density with exclusion" )
+				c_pllab( "distance", "altitude", "Bogon density with exclusion" )
 			end
 
 				-- Example with polar coordinates.
 
 				-- Load colour palettes
-    		plspal0( "cmap0_black_on_white.pal" );
-    		plspal1( "cmap1_gray.pal", 1 );
+    		c_plspal0( "cmap0_black_on_white.pal" );
+    		c_plspal1( "cmap1_gray.pal", 1 );
 				--Reduce colors in cmap 0 so that cmap 1 is useful on a 16-color display
-		    plscmap0n( 3 )
+		    c_plscmap0n( 3 )
 
-		    pladv( 0 )
-		    plvpor( .1, .9, .1, .9 )
-		    plwind( -1., 1., -1., 1. )
+		    c_pladv( 0 )
+		    c_plvpor( .1, .9, .1, .9 )
+		    c_plwind( -1., 1., -1., 1. )
 
 
-		    plpsty( 0 );
+		    c_plpsty( 0 );
 
 				--Build new coordinate matrices.
 
@@ -303,10 +303,10 @@ feature -- Initialization
 
 		    if ( colorbar = 1) then
 		        	-- Smaller text
-		        plschr( 0.0, 0.75 )
+		        c_plschr( 0.0, 0.75 )
 		        	-- Small ticks on the vertical axis
-		        plsmaj( 0.0, 0.5 )
-		        plsmin( 0.0, 0.5 )
+		        c_plsmaj( 0.0, 0.5 )
+		        c_plsmin( 0.0, 0.5 )
 
 		        num_values[1] := ns + 1;
 		        values[1]     := shedge.area.base_address
@@ -320,9 +320,9 @@ feature -- Initialization
 		            num_values, values.area.base_address );
 
 		        	-- Reset text and tick sizes
-		        plschr( 0.0, 1.0 )
-		        plsmaj( 0.0, 1.0 )
-		        plsmin( 0.0, 1.0 )
+		        c_plschr( 0.0, 1.0 )
+		        c_plsmaj( 0.0, 1.0 )
+		        c_plsmin( 0.0, 1.0 )
 		    end
 
 
@@ -335,13 +335,13 @@ feature -- Initialization
         		py[i.item + 1] := {DOUBLE_MATH}.sine( t )
 
 			end
-		    plcol0( 1 )
+		    c_plcol0( 1 )
 		    plline( px, py )
 
 			--  And label the plot.
 
-		    plcol0( 2 )
-		    pllab( "", "", "Tokamak Bogon Instability" )
+		    c_plcol0( 2 )
+		    c_pllab( "", "", "Tokamak Bogon Instability" )
 
 			z.clean
 			w.clean

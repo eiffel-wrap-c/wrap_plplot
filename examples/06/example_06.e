@@ -34,10 +34,10 @@ feature -- Initialization
 				data[i.item + 1] := {DOUBLE_MATH}.sine( i.item * delta )
 			end
 
-		    plcol0( 1 )
+		    c_plcol0( 1 )
     		plhist(data, -1.1, 1.1, 44, 0 )
-    		plcol0( 2 )
-    		pllab( "#frValue", "#frFrequency",  "#frPLplot Example 5 - Probability function of Oscillator" )
+    		c_plcol0( 2 )
+    		c_pllab( "#frValue", "#frFrequency",  "#frPLplot Example 5 - Probability function of Oscillator" )
 			finalize
 		end
 

@@ -33,13 +33,13 @@ feature -- Initialization
 				-- Initialize plplot
 			initialize
 
-		    pladv( 0 )
+		    c_pladv( 0 )
 		    	-- Ensure window has aspect ratio of one so circle is
 		    	-- plotted as a circle.
-		    plvasp( 1.0 )
-		    plwind( 0.0, 10.0, 0.0, 10.0 )
+		    c_plvasp( 1.0 )
+		    c_plwind( 0.0, 10.0, 0.0, 10.0 )
 		    	-- plenv(0., 10., 0., 10., 1, -2)
-		    plcol0( 2 )
+		    c_plcol0( 2 )
 
 		    	-- n.b. all theta quantities scaled by 2*M_PI/500 to be integers to avoid
 		    	--  floating point logic problems.
@@ -68,10 +68,10 @@ feature -- Initialization
 					j := j + 1
 					theta := theta + dthet
 				end
-		        plcol0( i.item + 1 )
-		        plpsty( ( i.item + 3 ) \\ 8 + 1 )
+		        c_plcol0( i.item + 1 )
+		        c_plpsty( ( i.item + 3 ) \\ 8 + 1 )
 		        plfill( x.subarray (1, j+1), y.subarray (1, j + 1) )
-		        plcol0( 1 )
+		        c_plcol0( 1 )
 		        plline( x.subarray (1, j + 1), y.subarray (1, j + 1) )
 		        just := ( 2.0 * {DOUBLE_MATH}.pi / 500.0 ) * ( theta0 + theta1 ) / 2.0
 		        dx   := 0.25 * {DOUBLE_MATH}.cosine( just )
@@ -82,12 +82,12 @@ feature -- Initialization
 		            just := 1.0
 		        end
 
-		        plptex( ( x[ ((j+1) // 2) + 1] + dx ), ( y[((j+1) // 2) + 1] + dy ), 1.0, 0.0, just, text[i.item + 1] );
+		        c_plptex( ( x[ ((j+1) // 2) + 1] + dx ), ( y[((j+1) // 2) + 1] + dy ), 1.0, 0.0, just, text[i.item + 1] );
 		        theta0 := theta - dthet;
 		    end
-		    plfont( 2 );
-		    plschr( 0., 1.3 );
-		    plptex( 5.0, 9.0, 1.0, 0.0, 0.5, "Percentage of Sales" );
+		    c_plfont( 2 );
+		    c_plschr( 0., 1.3 );
+		    c_plptex( 5.0, 9.0, 1.0, 0.0, 0.5, "Percentage of Sales" );
 
 			finalize
 		end

@@ -29,7 +29,10 @@
 	<target name="init_wrap_c">
 	    <set name="system_dir" value="${cwd}"/>
 	    <set name="wrap_c.library_name" value="plplot"/>
-	    <set name="wrap_c.full_header_name" value="${cwd}${path_separator}C${path_separator}include${path_separator}plplot.h"/>
+	    <set name="wrap_c.full_header_name" value="/usr/include/plplot/plplot.h" unless="${is_windows}" />	
+	    <set name="wrap_c.full_header_name" value="${cwd}${path_separator}C${path_separator}include${path_separator}plplot.h" if="${is_windows}" />
+	    <set name="wrap_c.c_compile_options" value="-I/${cwd}${path_separator}C${path_separator}include${path_separator}" if="${is_windows}"/>	
+	    <set name="wrap_c.c_compile_options" value="-I/usr/include/plplot" unless="${is_windows}"/>	
     	<set name="wrap_c.use_config_file" value="True"/>
     	<set name="wrap_c.verbose" value="--verbose"/>
     	<set name="wrap_c.wrapper_dir" value="${system_dir}${path_separator}generated_wrapper"/>
@@ -41,7 +44,7 @@
         </description>
       <set name="wrap_c.config_file_option" value=""/>
       <set name="wrap_c.config_file_option" value="--config=config.xml" if="${wrap_c.use_config_file}=True"/> 
-      <exec executable="wrap_c ${wrap_c.verbose} --output-dir=${wrap_c.wrapper_dir} --full-header=${wrap_c.full_header_name} ${wrap_c.config_file_option}"/>
+      <exec executable="wrap_c ${wrap_c.verbose} --c_compile_options=${wrap_c.c_compile_options} --output-dir=${wrap_c.wrapper_dir} --full-header=${wrap_c.full_header_name} ${wrap_c.config_file_option}"/>
     </target>
 
 	<target name="wrap_c_pre_script" depend="init_wrap_c">
@@ -71,7 +74,7 @@
 	</target>
 
 	<target name="clean">
-	    <echo message="- Clean [Eiffel LibGit2]" />
+	    <echo message="- Clean [Eiffel Plplot]" />
 	    <delete directory="C/spec/${ISE_PLATFORM}" unless="${is_windows}"/>
 	    <delete directory="C\spec\${ISE_C_COMPILER}\${ISE_PLATFORM}" if="${is_windows}" />
 	    <delete directory="generated_wrapper"/>

@@ -125,11 +125,6 @@ feature -- Access
 			c_c_plcont (f, nx, ny, kx, lx, ky, ly, clevel, nlevel, pltr, pltr_data)
 		end
 
-	plfcont (f2eval: POINTER; f2eval_data: POINTER; nx: INTEGER; ny: INTEGER; kx: INTEGER; lx: INTEGER; ky: INTEGER; ly: INTEGER; clevel: POINTER; nlevel: INTEGER; pltr: POINTER; pltr_data: POINTER) 
-		do
-			c_plfcont (f2eval, f2eval_data, nx, ny, kx, lx, ky, ly, clevel, nlevel, pltr, pltr_data)
-		end
-
 	c_plcpstrm (iplsr: INTEGER; flags: INTEGER)
 		external
 			"C inline use <plplot.h>"
@@ -142,16 +137,6 @@ feature -- Access
 	c_plctime (year: INTEGER; month: INTEGER; day: INTEGER; hour: INTEGER; min: INTEGER; sec: REAL_64; ctime: POINTER) 
 		do
 			c_c_plctime (year, month, day, hour, min, sec, ctime)
-		end
-
-	pldid2pc (xmin: POINTER; ymin: POINTER; xmax: POINTER; ymax: POINTER) 
-		do
-			c_pldid2pc (xmin, ymin, xmax, ymax)
-		end
-
-	pldip2dc (xmin: POINTER; ymin: POINTER; xmax: POINTER; ymax: POINTER) 
-		do
-			c_pldip2dc (xmin, ymin, xmax, ymax)
 		end
 
 	c_plend
@@ -368,11 +353,6 @@ feature -- Access
 			c_c_plgriddata (x, y, z, npts, xg, nptsx, yg, nptsy, zg, type, data)
 		end
 
-	plfgriddata (x: POINTER; y: POINTER; z: POINTER; npts: INTEGER; xg: POINTER; nptsx: INTEGER; yg: POINTER; nptsy: INTEGER; zops: PLF2OPS_T_STRUCT_API; zgp: POINTER; type: INTEGER; data: REAL_64) 
-		do
-			c_plfgriddata (x, y, z, npts, xg, nptsx, yg, nptsy, zops.item, zgp, type, data)
-		end
-
 	c_plgspa (xmin: POINTER; xmax: POINTER; ymin: POINTER; ymax: POINTER) 
 		do
 			c_c_plgspa (xmin, xmax, ymin, ymax)
@@ -519,19 +499,9 @@ feature -- Access
 			c_c_plmesh (x, y, z, nx, ny, opt)
 		end
 
-	plfmesh (x: POINTER; y: POINTER; zops: PLF2OPS_T_STRUCT_API; zp: POINTER; nx: INTEGER; ny: INTEGER; opt: INTEGER) 
-		do
-			c_plfmesh (x, y, zops.item, zp, nx, ny, opt)
-		end
-
 	c_plmeshc (x: POINTER; y: POINTER; z: POINTER; nx: INTEGER; ny: INTEGER; opt: INTEGER; clevel: POINTER; nlevel: INTEGER) 
 		do
 			c_c_plmeshc (x, y, z, nx, ny, opt, clevel, nlevel)
-		end
-
-	plfmeshc (x: POINTER; y: POINTER; zops: PLF2OPS_T_STRUCT_API; zp: POINTER; nx: INTEGER; ny: INTEGER; opt: INTEGER; clevel: POINTER; nlevel: INTEGER) 
-		do
-			c_plfmeshc (x, y, zops.item, zp, nx, ny, opt, clevel, nlevel)
 		end
 
 	c_plmkstrm (p_strm: POINTER) 
@@ -554,29 +524,14 @@ feature -- Access
 			c_c_plot3d (x, y, z, nx, ny, opt, side)
 		end
 
-	plfplot3d (x: POINTER; y: POINTER; zops: PLF2OPS_T_STRUCT_API; zp: POINTER; nx: INTEGER; ny: INTEGER; opt: INTEGER; side: INTEGER) 
-		do
-			c_plfplot3d (x, y, zops.item, zp, nx, ny, opt, side)
-		end
-
 	c_plot3dc (x: POINTER; y: POINTER; z: POINTER; nx: INTEGER; ny: INTEGER; opt: INTEGER; clevel: POINTER; nlevel: INTEGER) 
 		do
 			c_c_plot3dc (x, y, z, nx, ny, opt, clevel, nlevel)
 		end
 
-	plfplot3dc (x: POINTER; y: POINTER; zops: PLF2OPS_T_STRUCT_API; zp: POINTER; nx: INTEGER; ny: INTEGER; opt: INTEGER; clevel: POINTER; nlevel: INTEGER) 
-		do
-			c_plfplot3dc (x, y, zops.item, zp, nx, ny, opt, clevel, nlevel)
-		end
-
 	c_plot3dcl (x: POINTER; y: POINTER; z: POINTER; nx: INTEGER; ny: INTEGER; opt: INTEGER; clevel: POINTER; nlevel: INTEGER; indexxmin: INTEGER; indexxmax: INTEGER; indexymin: POINTER; indexymax: POINTER) 
 		do
 			c_c_plot3dcl (x, y, z, nx, ny, opt, clevel, nlevel, indexxmin, indexxmax, indexymin, indexymax)
-		end
-
-	plfplot3dcl (x: POINTER; y: POINTER; zops: PLF2OPS_T_STRUCT_API; zp: POINTER; nx: INTEGER; ny: INTEGER; opt: INTEGER; clevel: POINTER; nlevel: INTEGER; indexxmin: INTEGER; indexxmax: INTEGER; indexymin: POINTER; indexymax: POINTER) 
-		do
-			c_plfplot3dcl (x, y, zops.item, zp, nx, ny, opt, clevel, nlevel, indexxmin, indexxmax, indexymin, indexymax)
 		end
 
 	c_plpat (nlin: INTEGER; inc: POINTER; del: POINTER) 
@@ -894,21 +849,6 @@ feature -- Access
 			c_c_plshades (a, nx, ny, defined, xmin, xmax, ymin, ymax, clevel, nlevel, fill_width, cont_color, cont_width, fill, rectangular, pltr, pltr_data)
 		end
 
-	plfshades (zops: PLF2OPS_T_STRUCT_API; zp: POINTER; nx: INTEGER; ny: INTEGER; defined: POINTER; xmin: REAL_64; xmax: REAL_64; ymin: REAL_64; ymax: REAL_64; clevel: POINTER; nlevel: INTEGER; fill_width: REAL_64; cont_color: INTEGER; cont_width: REAL_64; fill: POINTER; rectangular: INTEGER; pltr: POINTER; pltr_data: POINTER) 
-		do
-			c_plfshades (zops.item, zp, nx, ny, defined, xmin, xmax, ymin, ymax, clevel, nlevel, fill_width, cont_color, cont_width, fill, rectangular, pltr, pltr_data)
-		end
-
-	plfshade (f2eval: POINTER; f2eval_data: POINTER; c2eval: POINTER; c2eval_data: POINTER; nx: INTEGER; ny: INTEGER; left: REAL_64; right: REAL_64; bottom: REAL_64; top: REAL_64; shade_min: REAL_64; shade_max: REAL_64; sh_cmap: INTEGER; sh_color: REAL_64; sh_width: REAL_64; min_color: INTEGER; min_width: REAL_64; max_color: INTEGER; max_width: REAL_64; fill: POINTER; rectangular: INTEGER; pltr: POINTER; pltr_data: POINTER) 
-		do
-			c_plfshade (f2eval, f2eval_data, c2eval, c2eval_data, nx, ny, left, right, bottom, top, shade_min, shade_max, sh_cmap, sh_color, sh_width, min_color, min_width, max_color, max_width, fill, rectangular, pltr, pltr_data)
-		end
-
-	plfshade1 (zops: PLF2OPS_T_STRUCT_API; zp: POINTER; nx: INTEGER; ny: INTEGER; defined: POINTER; xmin: REAL_64; xmax: REAL_64; ymin: REAL_64; ymax: REAL_64; shade_min: REAL_64; shade_max: REAL_64; sh_cmap: INTEGER; sh_color: REAL_64; sh_width: REAL_64; min_color: INTEGER; min_width: REAL_64; max_color: INTEGER; max_width: REAL_64; fill: POINTER; rectangular: INTEGER; pltr: POINTER; pltr_data: POINTER) 
-		do
-			c_plfshade1 (zops.item, zp, nx, ny, defined, xmin, xmax, ymin, ymax, shade_min, shade_max, sh_cmap, sh_color, sh_width, min_color, min_width, max_color, max_width, fill, rectangular, pltr, pltr_data)
-		end
-
 	c_plslabelfunc (label_func: POINTER; label_data: POINTER) 
 		do
 			c_c_plslabelfunc (label_func, label_data)
@@ -1063,19 +1003,9 @@ feature -- Access
 			c_c_plimagefr (idata, nx, ny, xmin, xmax, ymin, ymax, zmin, zmax, valuemin, valuemax, pltr, pltr_data)
 		end
 
-	plfimagefr (idataops: PLF2OPS_T_STRUCT_API; idatap: POINTER; nx: INTEGER; ny: INTEGER; xmin: REAL_64; xmax: REAL_64; ymin: REAL_64; ymax: REAL_64; zmin: REAL_64; zmax: REAL_64; valuemin: REAL_64; valuemax: REAL_64; pltr: POINTER; pltr_data: POINTER) 
-		do
-			c_plfimagefr (idataops.item, idatap, nx, ny, xmin, xmax, ymin, ymax, zmin, zmax, valuemin, valuemax, pltr, pltr_data)
-		end
-
 	c_plimage (idata: POINTER; nx: INTEGER; ny: INTEGER; xmin: REAL_64; xmax: REAL_64; ymin: REAL_64; ymax: REAL_64; zmin: REAL_64; zmax: REAL_64; dxmin: REAL_64; dxmax: REAL_64; dymin: REAL_64; dymax: REAL_64) 
 		do
 			c_c_plimage (idata, nx, ny, xmin, xmax, ymin, ymax, zmin, zmax, dxmin, dxmax, dymin, dymax)
-		end
-
-	plfimage (idataops: PLF2OPS_T_STRUCT_API; idatap: POINTER; nx: INTEGER; ny: INTEGER; xmin: REAL_64; xmax: REAL_64; ymin: REAL_64; ymax: REAL_64; zmin: REAL_64; zmax: REAL_64; dxmin: REAL_64; dxmax: REAL_64; dymin: REAL_64; dymax: REAL_64) 
-		do
-			c_plfimage (idataops.item, idatap, nx, ny, xmin, xmax, ymin, ymax, zmin, zmax, dxmin, dxmax, dymin, dymax)
 		end
 
 	c_plstyl (nms: INTEGER; mark: POINTER; space: POINTER) 
@@ -1088,19 +1018,9 @@ feature -- Access
 			c_c_plsurf3d (x, y, z, nx, ny, opt, clevel, nlevel)
 		end
 
-	plfsurf3d (x: POINTER; y: POINTER; zops: PLF2OPS_T_STRUCT_API; zp: POINTER; nx: INTEGER; ny: INTEGER; opt: INTEGER; clevel: POINTER; nlevel: INTEGER) 
-		do
-			c_plfsurf3d (x, y, zops.item, zp, nx, ny, opt, clevel, nlevel)
-		end
-
 	c_plsurf3dl (x: POINTER; y: POINTER; z: POINTER; nx: INTEGER; ny: INTEGER; opt: INTEGER; clevel: POINTER; nlevel: INTEGER; indexxmin: INTEGER; indexxmax: INTEGER; indexymin: POINTER; indexymax: POINTER) 
 		do
 			c_c_plsurf3dl (x, y, z, nx, ny, opt, clevel, nlevel, indexxmin, indexxmax, indexymin, indexymax)
-		end
-
-	plfsurf3dl (x: POINTER; y: POINTER; zops: PLF2OPS_T_STRUCT_API; zp: POINTER; nx: INTEGER; ny: INTEGER; opt: INTEGER; clevel: POINTER; nlevel: INTEGER; indexxmin: INTEGER; indexxmax: INTEGER; indexymin: POINTER; indexymax: POINTER) 
-		do
-			c_plfsurf3dl (x, y, zops.item, zp, nx, ny, opt, clevel, nlevel, indexxmin, indexxmax, indexymin, indexymax)
 		end
 
 	c_plsvect (arrowx: POINTER; arrowy: POINTER; npts: INTEGER; fill: INTEGER) 
@@ -1123,15 +1043,6 @@ feature -- Access
 		alias
 			"[
 				c_plsxax ((PLINT)$digmax, (PLINT)$digits);
-			]"
-		end
-
-	plsxwin (window_id: INTEGER)
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				plsxwin ((PLINT)$window_id);
 			]"
 		end
 
@@ -1184,11 +1095,6 @@ feature -- Access
 	c_plvect (u: POINTER; v: POINTER; nx: INTEGER; ny: INTEGER; scale: REAL_64; pltr: POINTER; pltr_data: POINTER) 
 		do
 			c_c_plvect (u, v, nx, ny, scale, pltr, pltr_data)
-		end
-
-	plfvect (getuv: POINTER; up: POINTER; vp: POINTER; nx: INTEGER; ny: INTEGER; scale: REAL_64; pltr: POINTER; pltr_data: POINTER) 
-		do
-			c_plfvect (getuv, up, vp, nx, ny, scale, pltr, pltr_data)
 		end
 
 	c_plvpas (xmin: REAL_64; xmax: REAL_64; ymin: REAL_64; ymax: REAL_64; aspect: REAL_64)
@@ -1250,154 +1156,9 @@ feature -- Access
 			c_c_plxormod (mode, status)
 		end
 
-	plg_file_devs (p_menustr: POINTER; p_devname: POINTER; p_ndev: POINTER) 
-		do
-			c_plg_file_devs (p_menustr, p_devname, p_ndev)
-		end
-
-	plg_devs (p_menustr: POINTER; p_devname: POINTER; p_ndev: POINTER) 
-		do
-			c_plg_devs (p_menustr, p_devname, p_ndev)
-		end
-
-	pls_key_eh (keyeh: POINTER; keyeh_data: POINTER) 
-		do
-			c_pls_key_eh (keyeh, keyeh_data)
-		end
-
-	pls_button_eh (buttoneh: POINTER; buttoneh_data: POINTER) 
-		do
-			c_pls_button_eh (buttoneh, buttoneh_data)
-		end
-
-	plsbop_h (handler: POINTER; handler_data: POINTER) 
-		do
-			c_plsbop_h (handler, handler_data)
-		end
-
-	plseop_h (handler: POINTER; handler_data: POINTER) 
-		do
-			c_plseop_h (handler, handler_data)
-		end
-
 	pls_error (errcode: POINTER; errmsg: STRING) 
 		do
 			c_pls_error (errcode,  (create {C_STRING}.make (errmsg)).item)
-		end
-
-	plsexit (handler: POINTER) 
-		do
-			c_plsexit (handler)
-		end
-
-	plsabort (handler: POINTER) 
-		do
-			c_plsabort (handler)
-		end
-
-	pltr0 (x: REAL_64; y: REAL_64; tx: POINTER; ty: POINTER; pltr_data: POINTER) 
-		do
-			c_pltr0 (x, y, tx, ty, pltr_data)
-		end
-
-	pltr1 (x: REAL_64; y: REAL_64; tx: POINTER; ty: POINTER; pltr_data: POINTER) 
-		do
-			c_pltr1 (x, y, tx, ty, pltr_data)
-		end
-
-	pltr2 (x: REAL_64; y: REAL_64; tx: POINTER; ty: POINTER; pltr_data: POINTER) 
-		do
-			c_pltr2 (x, y, tx, ty, pltr_data)
-		end
-
-	pltr2p (x: REAL_64; y: REAL_64; tx: POINTER; ty: POINTER; pltr_data: POINTER) 
-		do
-			c_pltr2p (x, y, tx, ty, pltr_data)
-		end
-
-	pltr2f (x: REAL_64; y: REAL_64; tx: POINTER; ty: POINTER; pltr_data: POINTER) 
-		do
-			c_pltr2f (x, y, tx, ty, pltr_data)
-		end
-
-	plf2ops_c: detachable PLF2OPS_T_STRUCT_API 
-		do
-			if attached c_plf2ops_c as l_ptr and then not l_ptr.is_default_pointer then
-				create Result.make_by_pointer ( l_ptr )
-			end
-
-		end
-
-	plf2ops_grid_c: detachable PLF2OPS_T_STRUCT_API 
-		do
-			if attached c_plf2ops_grid_c as l_ptr and then not l_ptr.is_default_pointer then
-				create Result.make_by_pointer ( l_ptr )
-			end
-
-		end
-
-	plf2ops_grid_row_major: detachable PLF2OPS_T_STRUCT_API 
-		do
-			if attached c_plf2ops_grid_row_major as l_ptr and then not l_ptr.is_default_pointer then
-				create Result.make_by_pointer ( l_ptr )
-			end
-
-		end
-
-	plf2ops_grid_col_major: detachable PLF2OPS_T_STRUCT_API 
-		do
-			if attached c_plf2ops_grid_col_major as l_ptr and then not l_ptr.is_default_pointer then
-				create Result.make_by_pointer ( l_ptr )
-			end
-
-		end
-
-	plf2eval1 (ix: INTEGER; iy: INTEGER; plf2eval_data: POINTER): REAL_64 
-		do
-			Result := c_plf2eval1 (ix, iy, plf2eval_data)
-		end
-
-	plf2eval2 (ix: INTEGER; iy: INTEGER; plf2eval_data: POINTER): REAL_64 
-		do
-			Result := c_plf2eval2 (ix, iy, plf2eval_data)
-		end
-
-	plf2eval (ix: INTEGER; iy: INTEGER; plf2eval_data: POINTER): REAL_64 
-		do
-			Result := c_plf2eval (ix, iy, plf2eval_data)
-		end
-
-	plf2evalr (ix: INTEGER; iy: INTEGER; plf2eval_data: POINTER): REAL_64 
-		do
-			Result := c_plf2evalr (ix, iy, plf2eval_data)
-		end
-
-	pl_clear_opts
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				plClearOpts ();
-			]"
-		end
-
-	pl_reset_opts
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				plResetOpts ();
-			]"
-		end
-
-	pl_merge_opts (options: PLOPTIONTABLE_STRUCT_API; name: STRING; notes: POINTER): INTEGER 
-		do
-			Result := c_pl_merge_opts (options.item,  (create {C_STRING}.make (name)).item, notes)
-		end
-
-	pl_set_usage (program_string: STRING; usage_string: STRING) 
-		do
-			c_pl_set_usage ( (create {C_STRING}.make (program_string)).item,  (create {C_STRING}.make (usage_string)).item)
 		end
 
 	c_plsetopt (opt: STRING; optarg: STRING): INTEGER 
@@ -1408,60 +1169,6 @@ feature -- Access
 	c_plparseopts (p_argc: POINTER; argv: STRING; mode: INTEGER): INTEGER 
 		do
 			Result := c_c_plparseopts (p_argc,  (create {C_STRING}.make (argv)).item, mode)
-		end
-
-	pl_opt_usage
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				plOptUsage ();
-			]"
-		end
-
-	plgfile (p_file: _IOBUF_STRUCT_API) 
-		do
-			c_plgfile (p_file.item)
-		end
-
-	plsfile (file: _IOBUF_STRUCT_API) 
-		do
-			c_plsfile (file.item)
-		end
-
-	plgesc (p_esc: STRING) 
-		do
-			c_plgesc ( (create {C_STRING}.make (p_esc)).item)
-		end
-
-	pl_cmd (op: INTEGER; ptr: POINTER) 
-		do
-			c_pl_cmd (op, ptr)
-		end
-
-	pl_find_name (p: STRING): INTEGER 
-		do
-			Result := c_pl_find_name ( (create {C_STRING}.make (p)).item)
-		end
-
-	pl_find_command (fn: STRING): POINTER 
-		do
-			Result := c_pl_find_command ( (create {C_STRING}.make (fn)).item)
-		end
-
-	pl_get_name (dir: STRING; subdir: STRING; filename: STRING; filespec: POINTER) 
-		do
-			c_pl_get_name ( (create {C_STRING}.make (dir)).item,  (create {C_STRING}.make (subdir)).item,  (create {C_STRING}.make (filename)).item, filespec)
-		end
-
-	pl_get_int (s: STRING): INTEGER 
-		do
-			Result := c_pl_get_int ( (create {C_STRING}.make (s)).item)
-		end
-
-	pl_get_flt (s: STRING): REAL_64 
-		do
-			Result := c_pl_get_flt ( (create {C_STRING}.make (s)).item)
 		end
 
 	pl_static2d_grid (ziliffe: POINTER; zstatic: POINTER; nx: INTEGER; ny: INTEGER) 
@@ -1482,21 +1189,6 @@ feature -- Access
 	pl_min_max2d_grid (f: POINTER; nx: INTEGER; ny: INTEGER; fmax: POINTER; fmin: POINTER) 
 		do
 			c_pl_min_max2d_grid (f, nx, ny, fmax, fmin)
-		end
-
-	pl_get_cursor (gin: PLGRAPHICSIN_STRUCT_API): INTEGER 
-		do
-			Result := c_pl_get_cursor (gin.item)
-		end
-
-	pl_translate_cursor (gin: PLGRAPHICSIN_STRUCT_API): INTEGER 
-		do
-			Result := c_pl_translate_cursor (gin.item)
-		end
-
-	plsdevdata (data: POINTER) 
-		do
-			c_plsdevdata (data)
 		end
 
 feature -- Externals
@@ -1564,39 +1256,12 @@ feature -- Externals
 			]"
 		end
 
-	c_plfcont (f2eval: POINTER; f2eval_data: POINTER; nx: INTEGER; ny: INTEGER; kx: INTEGER; lx: INTEGER; ky: INTEGER; ly: INTEGER; clevel: POINTER; nlevel: INTEGER; pltr: POINTER; pltr_data: POINTER)
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				plfcont ((PLF2EVAL_callback)$f2eval, (PLPointer)$f2eval_data, (PLINT)$nx, (PLINT)$ny, (PLINT)$kx, (PLINT)$lx, (PLINT)$ky, (PLINT)$ly, (PLFLT_VECTOR)$clevel, (PLINT)$nlevel, (PLTRANSFORM_callback)$pltr, (PLPointer)$pltr_data);
-			]"
-		end
-
 	c_c_plctime (year: INTEGER; month: INTEGER; day: INTEGER; hour: INTEGER; min: INTEGER; sec: REAL_64; ctime: POINTER)
 		external
 			"C inline use <plplot.h>"
 		alias
 			"[
 				c_plctime ((PLINT)$year, (PLINT)$month, (PLINT)$day, (PLINT)$hour, (PLINT)$min, (PLFLT)$sec, (PLFLT_NC_SCALAR)$ctime);
-			]"
-		end
-
-	c_pldid2pc (xmin: POINTER; ymin: POINTER; xmax: POINTER; ymax: POINTER)
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				pldid2pc ((PLFLT_NC_SCALAR)$xmin, (PLFLT_NC_SCALAR)$ymin, (PLFLT_NC_SCALAR)$xmax, (PLFLT_NC_SCALAR)$ymax);
-			]"
-		end
-
-	c_pldip2dc (xmin: POINTER; ymin: POINTER; xmax: POINTER; ymax: POINTER)
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				pldip2dc ((PLFLT_NC_SCALAR)$xmin, (PLFLT_NC_SCALAR)$ymin, (PLFLT_NC_SCALAR)$xmax, (PLFLT_NC_SCALAR)$ymax);
 			]"
 		end
 
@@ -1807,15 +1472,6 @@ feature -- Externals
 			]"
 		end
 
-	c_plfgriddata (x: POINTER; y: POINTER; z: POINTER; npts: INTEGER; xg: POINTER; nptsx: INTEGER; yg: POINTER; nptsy: INTEGER; zops: POINTER; zgp: POINTER; type: INTEGER; data: REAL_64)
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				plfgriddata ((PLFLT_VECTOR)$x, (PLFLT_VECTOR)$y, (PLFLT_VECTOR)$z, (PLINT)$npts, (PLFLT_VECTOR)$xg, (PLINT)$nptsx, (PLFLT_VECTOR)$yg, (PLINT)$nptsy, (PLF2OPS)$zops, (PLPointer)$zgp, (PLINT)$type, (PLFLT)$data);
-			]"
-		end
-
 	c_c_plgspa (xmin: POINTER; xmax: POINTER; ymin: POINTER; ymax: POINTER)
 		external
 			"C inline use <plplot.h>"
@@ -2014,30 +1670,12 @@ feature -- Externals
 			]"
 		end
 
-	c_plfmesh (x: POINTER; y: POINTER; zops: POINTER; zp: POINTER; nx: INTEGER; ny: INTEGER; opt: INTEGER)
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				plfmesh ((PLFLT_VECTOR)$x, (PLFLT_VECTOR)$y, (PLF2OPS)$zops, (PLPointer)$zp, (PLINT)$nx, (PLINT)$ny, (PLINT)$opt);
-			]"
-		end
-
 	c_c_plmeshc (x: POINTER; y: POINTER; z: POINTER; nx: INTEGER; ny: INTEGER; opt: INTEGER; clevel: POINTER; nlevel: INTEGER)
 		external
 			"C inline use <plplot.h>"
 		alias
 			"[
 				c_plmeshc ((PLFLT_VECTOR)$x, (PLFLT_VECTOR)$y, (PLFLT_MATRIX)$z, (PLINT)$nx, (PLINT)$ny, (PLINT)$opt, (PLFLT_VECTOR)$clevel, (PLINT)$nlevel);
-			]"
-		end
-
-	c_plfmeshc (x: POINTER; y: POINTER; zops: POINTER; zp: POINTER; nx: INTEGER; ny: INTEGER; opt: INTEGER; clevel: POINTER; nlevel: INTEGER)
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				plfmeshc ((PLFLT_VECTOR)$x, (PLFLT_VECTOR)$y, (PLF2OPS)$zops, (PLPointer)$zp, (PLINT)$nx, (PLINT)$ny, (PLINT)$opt, (PLFLT_VECTOR)$clevel, (PLINT)$nlevel);
 			]"
 		end
 
@@ -2077,15 +1715,6 @@ feature -- Externals
 			]"
 		end
 
-	c_plfplot3d (x: POINTER; y: POINTER; zops: POINTER; zp: POINTER; nx: INTEGER; ny: INTEGER; opt: INTEGER; side: INTEGER)
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				plfplot3d ((PLFLT_VECTOR)$x, (PLFLT_VECTOR)$y, (PLF2OPS)$zops, (PLPointer)$zp, (PLINT)$nx, (PLINT)$ny, (PLINT)$opt, (PLBOOL)$side);
-			]"
-		end
-
 	c_c_plot3dc (x: POINTER; y: POINTER; z: POINTER; nx: INTEGER; ny: INTEGER; opt: INTEGER; clevel: POINTER; nlevel: INTEGER)
 		external
 			"C inline use <plplot.h>"
@@ -2095,30 +1724,12 @@ feature -- Externals
 			]"
 		end
 
-	c_plfplot3dc (x: POINTER; y: POINTER; zops: POINTER; zp: POINTER; nx: INTEGER; ny: INTEGER; opt: INTEGER; clevel: POINTER; nlevel: INTEGER)
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				plfplot3dc ((PLFLT_VECTOR)$x, (PLFLT_VECTOR)$y, (PLF2OPS)$zops, (PLPointer)$zp, (PLINT)$nx, (PLINT)$ny, (PLINT)$opt, (PLFLT_VECTOR)$clevel, (PLINT)$nlevel);
-			]"
-		end
-
 	c_c_plot3dcl (x: POINTER; y: POINTER; z: POINTER; nx: INTEGER; ny: INTEGER; opt: INTEGER; clevel: POINTER; nlevel: INTEGER; indexxmin: INTEGER; indexxmax: INTEGER; indexymin: POINTER; indexymax: POINTER)
 		external
 			"C inline use <plplot.h>"
 		alias
 			"[
 				c_plot3dcl ((PLFLT_VECTOR)$x, (PLFLT_VECTOR)$y, (PLFLT_MATRIX)$z, (PLINT)$nx, (PLINT)$ny, (PLINT)$opt, (PLFLT_VECTOR)$clevel, (PLINT)$nlevel, (PLINT)$indexxmin, (PLINT)$indexxmax, (PLINT_VECTOR)$indexymin, (PLINT_VECTOR)$indexymax);
-			]"
-		end
-
-	c_plfplot3dcl (x: POINTER; y: POINTER; zops: POINTER; zp: POINTER; nx: INTEGER; ny: INTEGER; opt: INTEGER; clevel: POINTER; nlevel: INTEGER; indexxmin: INTEGER; indexxmax: INTEGER; indexymin: POINTER; indexymax: POINTER)
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				plfplot3dcl ((PLFLT_VECTOR)$x, (PLFLT_VECTOR)$y, (PLF2OPS)$zops, (PLPointer)$zp, (PLINT)$nx, (PLINT)$ny, (PLINT)$opt, (PLFLT_VECTOR)$clevel, (PLINT)$nlevel, (PLINT)$indexxmin, (PLINT)$indexxmax, (PLINT_VECTOR)$indexymin, (PLINT_VECTOR)$indexymax);
 			]"
 		end
 
@@ -2284,33 +1895,6 @@ feature -- Externals
 			]"
 		end
 
-	c_plfshades (zops: POINTER; zp: POINTER; nx: INTEGER; ny: INTEGER; defined: POINTER; xmin: REAL_64; xmax: REAL_64; ymin: REAL_64; ymax: REAL_64; clevel: POINTER; nlevel: INTEGER; fill_width: REAL_64; cont_color: INTEGER; cont_width: REAL_64; fill: POINTER; rectangular: INTEGER; pltr: POINTER; pltr_data: POINTER)
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				plfshades ((PLF2OPS)$zops, (PLPointer)$zp, (PLINT)$nx, (PLINT)$ny, (PLDEFINED_callback)$defined, (PLFLT)$xmin, (PLFLT)$xmax, (PLFLT)$ymin, (PLFLT)$ymax, (PLFLT_VECTOR)$clevel, (PLINT)$nlevel, (PLFLT)$fill_width, (PLINT)$cont_color, (PLFLT)$cont_width, (PLFILL_callback)$fill, (PLINT)$rectangular, (PLTRANSFORM_callback)$pltr, (PLPointer)$pltr_data);
-			]"
-		end
-
-	c_plfshade (f2eval: POINTER; f2eval_data: POINTER; c2eval: POINTER; c2eval_data: POINTER; nx: INTEGER; ny: INTEGER; left: REAL_64; right: REAL_64; bottom: REAL_64; top: REAL_64; shade_min: REAL_64; shade_max: REAL_64; sh_cmap: INTEGER; sh_color: REAL_64; sh_width: REAL_64; min_color: INTEGER; min_width: REAL_64; max_color: INTEGER; max_width: REAL_64; fill: POINTER; rectangular: INTEGER; pltr: POINTER; pltr_data: POINTER)
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				plfshade ((PLF2EVAL_callback)$f2eval, (PLPointer)$f2eval_data, (PLF2EVAL_callback)$c2eval, (PLPointer)$c2eval_data, (PLINT)$nx, (PLINT)$ny, (PLFLT)$left, (PLFLT)$right, (PLFLT)$bottom, (PLFLT)$top, (PLFLT)$shade_min, (PLFLT)$shade_max, (PLINT)$sh_cmap, (PLFLT)$sh_color, (PLFLT)$sh_width, (PLINT)$min_color, (PLFLT)$min_width, (PLINT)$max_color, (PLFLT)$max_width, (PLFILL_callback)$fill, (PLBOOL)$rectangular, (PLTRANSFORM_callback)$pltr, (PLPointer)$pltr_data);
-			]"
-		end
-
-	c_plfshade1 (zops: POINTER; zp: POINTER; nx: INTEGER; ny: INTEGER; defined: POINTER; xmin: REAL_64; xmax: REAL_64; ymin: REAL_64; ymax: REAL_64; shade_min: REAL_64; shade_max: REAL_64; sh_cmap: INTEGER; sh_color: REAL_64; sh_width: REAL_64; min_color: INTEGER; min_width: REAL_64; max_color: INTEGER; max_width: REAL_64; fill: POINTER; rectangular: INTEGER; pltr: POINTER; pltr_data: POINTER)
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				plfshade1 ((PLF2OPS)$zops, (PLPointer)$zp, (PLINT)$nx, (PLINT)$ny, (PLDEFINED_callback)$defined, (PLFLT)$xmin, (PLFLT)$xmax, (PLFLT)$ymin, (PLFLT)$ymax, (PLFLT)$shade_min, (PLFLT)$shade_max, (PLINT)$sh_cmap, (PLFLT)$sh_color, (PLFLT)$sh_width, (PLINT)$min_color, (PLFLT)$min_width, (PLINT)$max_color, (PLFLT)$max_width, (PLFILL_callback)$fill, (PLINT)$rectangular, (PLTRANSFORM_callback)$pltr, (PLPointer)$pltr_data);
-			]"
-		end
-
 	c_c_plslabelfunc (label_func: POINTER; label_data: POINTER)
 		external
 			"C inline use <plplot.h>"
@@ -2410,30 +1994,12 @@ feature -- Externals
 			]"
 		end
 
-	c_plfimagefr (idataops: POINTER; idatap: POINTER; nx: INTEGER; ny: INTEGER; xmin: REAL_64; xmax: REAL_64; ymin: REAL_64; ymax: REAL_64; zmin: REAL_64; zmax: REAL_64; valuemin: REAL_64; valuemax: REAL_64; pltr: POINTER; pltr_data: POINTER)
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				plfimagefr ((PLF2OPS)$idataops, (PLPointer)$idatap, (PLINT)$nx, (PLINT)$ny, (PLFLT)$xmin, (PLFLT)$xmax, (PLFLT)$ymin, (PLFLT)$ymax, (PLFLT)$zmin, (PLFLT)$zmax, (PLFLT)$valuemin, (PLFLT)$valuemax, (PLTRANSFORM_callback)$pltr, (PLPointer)$pltr_data);
-			]"
-		end
-
 	c_c_plimage (idata: POINTER; nx: INTEGER; ny: INTEGER; xmin: REAL_64; xmax: REAL_64; ymin: REAL_64; ymax: REAL_64; zmin: REAL_64; zmax: REAL_64; dxmin: REAL_64; dxmax: REAL_64; dymin: REAL_64; dymax: REAL_64)
 		external
 			"C inline use <plplot.h>"
 		alias
 			"[
 				c_plimage ((PLFLT_MATRIX)$idata, (PLINT)$nx, (PLINT)$ny, (PLFLT)$xmin, (PLFLT)$xmax, (PLFLT)$ymin, (PLFLT)$ymax, (PLFLT)$zmin, (PLFLT)$zmax, (PLFLT)$dxmin, (PLFLT)$dxmax, (PLFLT)$dymin, (PLFLT)$dymax);
-			]"
-		end
-
-	c_plfimage (idataops: POINTER; idatap: POINTER; nx: INTEGER; ny: INTEGER; xmin: REAL_64; xmax: REAL_64; ymin: REAL_64; ymax: REAL_64; zmin: REAL_64; zmax: REAL_64; dxmin: REAL_64; dxmax: REAL_64; dymin: REAL_64; dymax: REAL_64)
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				plfimage ((PLF2OPS)$idataops, (PLPointer)$idatap, (PLINT)$nx, (PLINT)$ny, (PLFLT)$xmin, (PLFLT)$xmax, (PLFLT)$ymin, (PLFLT)$ymax, (PLFLT)$zmin, (PLFLT)$zmax, (PLFLT)$dxmin, (PLFLT)$dxmax, (PLFLT)$dymin, (PLFLT)$dymax);
 			]"
 		end
 
@@ -2455,30 +2021,12 @@ feature -- Externals
 			]"
 		end
 
-	c_plfsurf3d (x: POINTER; y: POINTER; zops: POINTER; zp: POINTER; nx: INTEGER; ny: INTEGER; opt: INTEGER; clevel: POINTER; nlevel: INTEGER)
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				plfsurf3d ((PLFLT_VECTOR)$x, (PLFLT_VECTOR)$y, (PLF2OPS)$zops, (PLPointer)$zp, (PLINT)$nx, (PLINT)$ny, (PLINT)$opt, (PLFLT_VECTOR)$clevel, (PLINT)$nlevel);
-			]"
-		end
-
 	c_c_plsurf3dl (x: POINTER; y: POINTER; z: POINTER; nx: INTEGER; ny: INTEGER; opt: INTEGER; clevel: POINTER; nlevel: INTEGER; indexxmin: INTEGER; indexxmax: INTEGER; indexymin: POINTER; indexymax: POINTER)
 		external
 			"C inline use <plplot.h>"
 		alias
 			"[
 				c_plsurf3dl ((PLFLT_VECTOR)$x, (PLFLT_VECTOR)$y, (PLFLT_MATRIX)$z, (PLINT)$nx, (PLINT)$ny, (PLINT)$opt, (PLFLT_VECTOR)$clevel, (PLINT)$nlevel, (PLINT)$indexxmin, (PLINT)$indexxmax, (PLINT_VECTOR)$indexymin, (PLINT_VECTOR)$indexymax);
-			]"
-		end
-
-	c_plfsurf3dl (x: POINTER; y: POINTER; zops: POINTER; zp: POINTER; nx: INTEGER; ny: INTEGER; opt: INTEGER; clevel: POINTER; nlevel: INTEGER; indexxmin: INTEGER; indexxmax: INTEGER; indexymin: POINTER; indexymax: POINTER)
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				plfsurf3dl ((PLFLT_VECTOR)$x, (PLFLT_VECTOR)$y, (PLF2OPS)$zops, (PLPointer)$zp, (PLINT)$nx, (PLINT)$ny, (PLINT)$opt, (PLFLT_VECTOR)$clevel, (PLINT)$nlevel, (PLINT)$indexxmin, (PLINT)$indexxmax, (PLINT_VECTOR)$indexymin, (PLINT_VECTOR)$indexymax);
 			]"
 		end
 
@@ -2518,15 +2066,6 @@ feature -- Externals
 			]"
 		end
 
-	c_plfvect (getuv: POINTER; up: POINTER; vp: POINTER; nx: INTEGER; ny: INTEGER; scale: REAL_64; pltr: POINTER; pltr_data: POINTER)
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				plfvect ((PLF2EVAL_callback)$getuv, (PLPointer)$up, (PLPointer)$vp, (PLINT)$nx, (PLINT)$ny, (PLFLT)$scale, (PLTRANSFORM_callback)$pltr, (PLPointer)$pltr_data);
-			]"
-		end
-
 	c_c_plxormod (mode: INTEGER; status: POINTER)
 		external
 			"C inline use <plplot.h>"
@@ -2536,219 +2075,12 @@ feature -- Externals
 			]"
 		end
 
-	c_plg_file_devs (p_menustr: POINTER; p_devname: POINTER; p_ndev: POINTER)
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				plgFileDevs ((PLCHAR_VECTOR**)$p_menustr, (PLCHAR_VECTOR**)$p_devname, (int*)$p_ndev);
-			]"
-		end
-
-	c_plg_devs (p_menustr: POINTER; p_devname: POINTER; p_ndev: POINTER)
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				plgDevs ((PLCHAR_VECTOR**)$p_menustr, (PLCHAR_VECTOR**)$p_devname, (int*)$p_ndev);
-			]"
-		end
-
-	c_pls_key_eh (keyeh: POINTER; keyeh_data: POINTER)
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				plsKeyEH ((void (*) (PLGraphicsIn *anonymous_1, PLPointer anonymous_2, int *anonymous_3))$keyeh, (PLPointer)$keyeh_data);
-			]"
-		end
-
-	c_pls_button_eh (buttoneh: POINTER; buttoneh_data: POINTER)
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				plsButtonEH ((void (*) (PLGraphicsIn *anonymous_1, PLPointer anonymous_2, int *anonymous_3))$buttoneh, (PLPointer)$buttoneh_data);
-			]"
-		end
-
-	c_plsbop_h (handler: POINTER; handler_data: POINTER)
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				plsbopH ((void (*) (PLPointer anonymous_1, int *anonymous_2))$handler, (PLPointer)$handler_data);
-			]"
-		end
-
-	c_plseop_h (handler: POINTER; handler_data: POINTER)
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				plseopH ((void (*) (PLPointer anonymous_1, int *anonymous_2))$handler, (PLPointer)$handler_data);
-			]"
-		end
-
 	c_pls_error (errcode: POINTER; errmsg: POINTER)
 		external
 			"C inline use <plplot.h>"
 		alias
 			"[
 				plsError ((PLINT_NC_SCALAR)$errcode, (PLCHAR_NC_VECTOR)$errmsg);
-			]"
-		end
-
-	c_plsexit (handler: POINTER)
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				plsexit ((int (*) (PLCHAR_VECTOR anonymous_1))$handler);
-			]"
-		end
-
-	c_plsabort (handler: POINTER)
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				plsabort ((void (*) (PLCHAR_VECTOR anonymous_1))$handler);
-			]"
-		end
-
-	c_pltr0 (x: REAL_64; y: REAL_64; tx: POINTER; ty: POINTER; pltr_data: POINTER)
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				pltr0 ((PLFLT)$x, (PLFLT)$y, (PLFLT_NC_SCALAR)$tx, (PLFLT_NC_SCALAR)$ty, (PLPointer)$pltr_data);
-			]"
-		end
-
-	c_pltr1 (x: REAL_64; y: REAL_64; tx: POINTER; ty: POINTER; pltr_data: POINTER)
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				pltr1 ((PLFLT)$x, (PLFLT)$y, (PLFLT_NC_SCALAR)$tx, (PLFLT_NC_SCALAR)$ty, (PLPointer)$pltr_data);
-			]"
-		end
-
-	c_pltr2 (x: REAL_64; y: REAL_64; tx: POINTER; ty: POINTER; pltr_data: POINTER)
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				pltr2 ((PLFLT)$x, (PLFLT)$y, (PLFLT_NC_SCALAR)$tx, (PLFLT_NC_SCALAR)$ty, (PLPointer)$pltr_data);
-			]"
-		end
-
-	c_pltr2p (x: REAL_64; y: REAL_64; tx: POINTER; ty: POINTER; pltr_data: POINTER)
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				pltr2p ((PLFLT)$x, (PLFLT)$y, (PLFLT_NC_SCALAR)$tx, (PLFLT_NC_SCALAR)$ty, (PLPointer)$pltr_data);
-			]"
-		end
-
-	c_pltr2f (x: REAL_64; y: REAL_64; tx: POINTER; ty: POINTER; pltr_data: POINTER)
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				pltr2f ((PLFLT)$x, (PLFLT)$y, (PLFLT_NC_SCALAR)$tx, (PLFLT_NC_SCALAR)$ty, (PLPointer)$pltr_data);
-			]"
-		end
-
-	c_plf2ops_c: POINTER
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				return plf2ops_c ();
-			]"
-		end
-
-	c_plf2ops_grid_c: POINTER
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				return plf2ops_grid_c ();
-			]"
-		end
-
-	c_plf2ops_grid_row_major: POINTER
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				return plf2ops_grid_row_major ();
-			]"
-		end
-
-	c_plf2ops_grid_col_major: POINTER
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				return plf2ops_grid_col_major ();
-			]"
-		end
-
-	c_plf2eval1 (ix: INTEGER; iy: INTEGER; plf2eval_data: POINTER): REAL_64
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				return plf2eval1 ((PLINT)$ix, (PLINT)$iy, (PLPointer)$plf2eval_data);
-			]"
-		end
-
-	c_plf2eval2 (ix: INTEGER; iy: INTEGER; plf2eval_data: POINTER): REAL_64
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				return plf2eval2 ((PLINT)$ix, (PLINT)$iy, (PLPointer)$plf2eval_data);
-			]"
-		end
-
-	c_plf2eval (ix: INTEGER; iy: INTEGER; plf2eval_data: POINTER): REAL_64
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				return plf2eval ((PLINT)$ix, (PLINT)$iy, (PLPointer)$plf2eval_data);
-			]"
-		end
-
-	c_plf2evalr (ix: INTEGER; iy: INTEGER; plf2eval_data: POINTER): REAL_64
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				return plf2evalr ((PLINT)$ix, (PLINT)$iy, (PLPointer)$plf2eval_data);
-			]"
-		end
-
-	c_pl_merge_opts (options: POINTER; name: POINTER; notes: POINTER): INTEGER
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				return plMergeOpts ((PLOptionTable*)$options, (PLCHAR_VECTOR)$name, (PLCHAR_VECTOR*)$notes);
-			]"
-		end
-
-	c_pl_set_usage (program_string: POINTER; usage_string: POINTER)
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				plSetUsage ((PLCHAR_VECTOR)$program_string, (PLCHAR_VECTOR)$usage_string);
 			]"
 		end
 
@@ -2767,87 +2099,6 @@ feature -- Externals
 		alias
 			"[
 				return c_plparseopts ((int*)$p_argc, (PLCHAR_NC_MATRIX)$argv, (PLINT)$mode);
-			]"
-		end
-
-	c_plgfile (p_file: POINTER)
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				plgfile ((FILE**)$p_file);
-			]"
-		end
-
-	c_plsfile (file: POINTER)
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				plsfile ((FILE*)$file);
-			]"
-		end
-
-	c_plgesc (p_esc: POINTER)
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				plgesc ((PLCHAR_NC_SCALAR)$p_esc);
-			]"
-		end
-
-	c_pl_cmd (op: INTEGER; ptr: POINTER)
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				pl_cmd ((PLINT)$op, (PLPointer)$ptr);
-			]"
-		end
-
-	c_pl_find_name (p: POINTER): INTEGER
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				return plFindName ((PLCHAR_NC_VECTOR)$p);
-			]"
-		end
-
-	c_pl_find_command (fn: POINTER): POINTER
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				return plFindCommand ((PLCHAR_VECTOR)$fn);
-			]"
-		end
-
-	c_pl_get_name (dir: POINTER; subdir: POINTER; filename: POINTER; filespec: POINTER)
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				plGetName ((PLCHAR_VECTOR)$dir, (PLCHAR_VECTOR)$subdir, (PLCHAR_VECTOR)$filename, (PLCHAR_NC_VECTOR*)$filespec);
-			]"
-		end
-
-	c_pl_get_int (s: POINTER): INTEGER
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				return plGetInt ((PLCHAR_VECTOR)$s);
-			]"
-		end
-
-	c_pl_get_flt (s: POINTER): REAL_64
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				return plGetFlt ((PLCHAR_VECTOR)$s);
 			]"
 		end
 
@@ -2884,33 +2135,6 @@ feature -- Externals
 		alias
 			"[
 				plMinMax2dGrid ((PLFLT_MATRIX)$f, (PLINT)$nx, (PLINT)$ny, (PLFLT_NC_SCALAR)$fmax, (PLFLT_NC_SCALAR)$fmin);
-			]"
-		end
-
-	c_pl_get_cursor (gin: POINTER): INTEGER
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				return plGetCursor ((PLGraphicsIn*)$gin);
-			]"
-		end
-
-	c_pl_translate_cursor (gin: POINTER): INTEGER
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				return plTranslateCursor ((PLGraphicsIn*)$gin);
-			]"
-		end
-
-	c_plsdevdata (data: POINTER)
-		external
-			"C inline use <plplot.h>"
-		alias
-			"[
-				plsdevdata ((PLPointer)$data);
 			]"
 		end
 

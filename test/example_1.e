@@ -51,8 +51,8 @@ feature {NONE} -- Initialization
 			initialize
 
 				-- Create a labelled box to hold the plot.
-			plenv (xmin, xmax, ymin, ymax, 0, 0)
-			pllab ("x", "y=100 x#u2#d", "Simple PLplot demo of a 2D line plot")
+			c_plenv (xmin, xmax, ymin, ymax, 0, 0)
+			c_pllab ("x", "y=100 x#u2#d", "Simple PLplot demo of a 2D line plot")
 
 			plline (x, y)
 

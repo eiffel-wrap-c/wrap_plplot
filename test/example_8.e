@@ -30,32 +30,32 @@ feature -- Initialization
 
 			-- Initialize PlPlot
 			initialize
-			plfontld( 0 )
+			c_plfontld( 0 )
 
 			across 0 |..| 19 as l loop
 				if  l.item = 2 then
-            		plfontld ( 1 )
+            		c_plfontld ( 1 )
             	end
-        		pladv ( 0 )
+        		c_pladv ( 0 )
 
 				-- Set up viewport and window
 
-				plcol0 ( 2 )
-				plvpor( 0.15, 0.95, 0.1, 0.9 )
-				plwind( 0.0, 1.0, 0.0, 1.0 )
+				c_plcol0 ( 2 )
+				c_plvpor( 0.15, 0.95, 0.1, 0.9 )
+				c_plwind( 0.0, 1.0, 0.0, 1.0 )
 
  					-- Draw the grid using plbox
 
-				plbox( "bcg", 0.1, 0, "bcg", 0.1, 0 )
+				c_plbox( "bcg", 0.1, 0, "bcg", 0.1, 0 )
 
 					-- Write the digits below the frame
 
- 		       	plcol0( 15 )
+ 		       	c_plcol0( 15 )
 
  		       	across 0 |..| 9 as i loop
  		       		create text.make (1)
  		       		text.append (i.item.out)
- 		       		plmtex( "b", 1.5, ( 0.1 * i.item + 0.05 ), 0.5, text );
+ 		       		c_plmtex( "b", 1.5, ( 0.1 * i.item + 0.05 ), 0.5, text );
  		       	end
 
  		       	k := 0
@@ -64,7 +64,7 @@ feature -- Initialization
 					-- Write the digits to the left of the frame
 					create text.make (5)
 					text.append ((base[l.item + 1] + 10 * i.item).out)
-					plmtex( "lv", 1.0, ( 0.95 - 0.1 * i.item ), 1.0, text );
+					c_plmtex( "lv", 1.0, ( 0.95 - 0.1 * i.item ), 1.0, text );
 					across 0 |..| 9 as j loop
 						x := 0.1 * j.item + 0.05;
 						y := 0.95 - 0.1 * i.item;
@@ -74,7 +74,7 @@ feature -- Initialization
 							text.append ("#(")
 							text.append ((base[l.item + 1] + k).out)
 							text.append (")")
-							plptex( x, y, 1.0, 0.0, 0.5, text );
+							c_plptex( x, y, 1.0, 0.0, 0.5, text );
 						else
 							plsym( <<x>>, <<y>>, base[l.item + 1] + k );
 						end
@@ -82,9 +82,9 @@ feature -- Initialization
 					end
 				end
 				if l.item < 2 then
-					plmtex( "t", 1.5, 0.5, 0.5, "PLplot Example 7 - PLSYM symbols (compact)" );
+					c_plmtex( "t", 1.5, 0.5, 0.5, "PLplot Example 7 - PLSYM symbols (compact)" );
 				else
-					plmtex( "t", 1.5, 0.5, 0.5, "PLplot Example 7 - PLSYM symbols (extended)" );
+					c_plmtex( "t", 1.5, 0.5, 0.5, "PLplot Example 7 - PLSYM symbols (extended)" );
 				end
 			end
 			finalize
