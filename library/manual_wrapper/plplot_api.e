@@ -349,6 +349,16 @@ feature -- Access
 			c_plimage (idata.pointer, nx, ny, xmin, xmax, ymin, ymax, zmin, zmax, dxmin, dxmax, dymin, dymax)
 		end
 
+	c_plptex_32 (x: REAL_64; y: REAL_64; dx: REAL_64; dy: REAL_64; just: REAL_64; text: STRING_32)
+		local
+			c_str:C_STRING
+			utf: UTF_CONVERTER
+		do
+			create c_str.make (utf.string_32_to_utf_8_string_8(text))
+			c_c_plptex (x, y, dx, dy, just, c_str.item)
+		end
+
+
 feature -- C function address: Transformation routines
 
 	pltr0_address: POINTER
