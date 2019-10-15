@@ -90,10 +90,64 @@ feature -- Access
 
 			create l_symbols.make (symbols.count * 8)
 			i := 0
-			across text as ic  loop
+			across symbols as ic  loop
 				l_symbols.put_pointer (ic.item.area.base_address, i)
 				i := i + 8
 			end
+			c_c_pllegend (
+						p_legend_width, p_legend_height, opt, position,
+						x, y, plot_width, bg_color, bb_color, bb_style,
+						nrow, ncolumn, nlegend, opt_array.area.base_address, text_offset,
+						text_scale, text_spacing, text_justification, text_colors.area.base_address,
+						l_text.item, box_colors, box_patterns,
+						box_scales, box_line_widths, line_colors.area.base_address, line_styles.area.base_address,
+						line_widths.area.base_address, symbol_colors.area.base_address, symbol_scales.area.base_address, symbol_numbers.area.base_address,
+						l_symbols.item)
+		end
+
+
+	pllegend_32 (
+				p_legend_width: POINTER; p_legend_height: POINTER; opt: INTEGER;
+				position: INTEGER; x: REAL_64; y: REAL_64; plot_width: REAL_64;
+				bg_color: INTEGER; bb_color: INTEGER; bb_style: INTEGER; nrow: INTEGER;
+				ncolumn: INTEGER; nlegend: INTEGER; opt_array: ARRAY [INTEGER]; text_offset: REAL_64;
+				text_scale: REAL_64; text_spacing: REAL_64; text_justification: REAL_64;
+				text_colors: ARRAY [INTEGER]; text: ARRAY [STRING_32]; box_colors: POINTER; box_patterns: POINTER;
+				box_scales: POINTER; box_line_widths: POINTER; line_colors: ARRAY [INTEGER]; line_styles: ARRAY [INTEGER];
+				line_widths: ARRAY [REAL_64]; symbol_colors: ARRAY [INTEGER]; symbol_scales: ARRAY [REAL_64]; symbol_numbers: ARRAY [INTEGER]; symbols: ARRAY [STRING_32])
+		local
+			l_text: MANAGED_POINTER
+			l_symbols:  MANAGED_POINTER
+			i: INTEGER
+			c_str:C_STRING
+			utf: UTF_CONVERTER
+			l_str: ARRAY [STRING]
+		do
+
+
+			create l_str.make_filled ("", 1, text.count)
+			across text as ic  loop
+				l_str.put (utf.string_32_to_utf_8_string_8(ic.item), ic.cursor_index)
+			end
+
+
+			create l_text.make ((text.count+1) * 8)
+			i := 0
+			across l_str as ic  loop
+				l_text.put_pointer (ic.item.area.base_address, i)
+				i := i + 8
+			end
+			l_text.put_pointer (default_pointer, i)
+
+
+			create l_symbols.make (symbols.count * 8)
+			i := 0
+			across symbols as ic  loop
+				create c_str.make (utf.string_32_to_utf_8_string_8(ic.item))
+				l_symbols.put_pointer (c_str.item, i)
+				i := i + 8
+			end
+
 
 
 			c_c_pllegend (
@@ -356,6 +410,15 @@ feature -- Access
 		do
 			create c_str.make (utf.string_32_to_utf_8_string_8(text))
 			c_c_plptex (x, y, dx, dy, just, c_str.item)
+		end
+
+	c_plmtex_32 (side: STRING; disp: REAL_64; pos: REAL_64; just: REAL_64; text: STRING_32)
+		local
+			c_str:C_STRING
+			utf: UTF_CONVERTER
+		do
+			create c_str.make (utf.string_32_to_utf_8_string_8(text))
+			c_c_plmtex ( (create {C_STRING}.make (side)).item, disp, pos, just, c_str.item)
 		end
 
 
