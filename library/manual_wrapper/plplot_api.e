@@ -421,6 +421,24 @@ feature -- Access
 			c_c_plmtex ( (create {C_STRING}.make (side)).item, disp, pos, just, c_str.item)
 		end
 
+	plscmap0a (r: ARRAY [INTEGER]; g: ARRAY [INTEGER]; b: ARRAY [INTEGER]; alpha: ARRAY [REAL_64])
+		require
+			arrays_same_length: r.count = g.count and r.count = b.count and r.count = alpha.count
+		do
+			c_c_plscmap0a (r.area.base_address, g.area.base_address, b.area.base_address, alpha.area.base_address, r.count)
+		end
+
+	plgradient (x: ARRAY [REAL_64]; y: ARRAY [REAL_64]; angle: REAL_64)
+		require
+			arrays_same_length: x.count = y.count
+		do
+			c_c_plgradient (x.count, x.area.base_address, y.area.base_address, angle)
+		end
+
+	plscmap1la (itype: INTEGER; intensity: ARRAY [REAL_64]; coord1: ARRAY [REAL_64]; coord2: ARRAY [REAL_64]; coord3: ARRAY [REAL_64]; alpha: ARRAY [REAL_64]; alt_hue_path: ARRAY [BOOLEAN])
+		do
+			c_c_plscmap1la (itype, intensity.count, intensity.area.base_address, coord1.area.base_address, coord2.area.base_address, coord3.area.base_address, alpha.area.base_address, alt_hue_path.area.base_address)
+		end
 
 feature -- C function address: Transformation routines
 
