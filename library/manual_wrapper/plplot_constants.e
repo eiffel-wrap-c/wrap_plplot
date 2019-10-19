@@ -455,4 +455,17 @@ feature -- Axis label tags
 			"PL_Z_AXIS"
 		end
 
+
+feature -- Access		
+
+	PL_NOTSET: INTEGER
+			-- Macro used (in some cases) to ignore value of argument
+			-- I don't plan on changing the value so you can hard-code it
+		external
+			"C inline use <plplot.h>"
+		alias
+			"PL_NOTSET"
+		end
+
+
 end
