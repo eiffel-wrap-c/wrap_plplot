@@ -440,6 +440,31 @@ feature -- Access
 			c_c_plscmap1la (itype, intensity.count, intensity.area.base_address, coord1.area.base_address, coord2.area.base_address, coord3.area.base_address, alpha.area.base_address, alt_hue_path.area.base_address)
 		end
 
+	plscmap1 (r: ARRAY [INTEGER]; g: ARRAY [INTEGER]; b: ARRAY [INTEGER])
+		require
+			arrays_same_length: r.count = g.count and r.count = b.count
+		do
+			c_c_plscmap1 (r.area.base_address, g.area.base_address, b.area.base_address, r.count)
+		end
+
+	plscmap1a (r: ARRAY [INTEGER]; g: ARRAY [INTEGER]; b: ARRAY [INTEGER]; alpha: ARRAY [REAL_64])
+		require
+			arrays_same_length: r.count = g.count and r.count = b.count and r.count = alpha.count
+		do
+			c_c_plscmap1a (r.area.base_address, g.area.base_address, b.area.base_address, alpha.area.base_address, r.count)
+		end
+
+	plgfnam (fnam: STRING)
+		local
+			l_str: C_STRING
+			l_ptr: POINTER
+		do
+			create l_str.make_empty (fnam.capacity)
+			c_c_plgfnam (l_str.item)
+			fnam.append (l_str.string)
+		end
+
+
 feature -- C function address: Transformation routines
 
 	pltr0_address: POINTER
