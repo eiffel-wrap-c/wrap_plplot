@@ -65,8 +65,9 @@ feature {NONE} --Initialization
 		    maxx := minx + 36;
 
 		    		-- Setup a custom latitude and longitude-based scaling function.
-		    create l_labeler.make (agent geolocation_labeler)
-		    c_plslabelfunc( l_labeler.c_dispatcher, default_pointer )
+		    create l_labeler.make
+		    l_labeler.register_callback_1 (agent geolocation_labeler)
+		    c_plslabelfunc( l_labeler.c_dispatcher_1, default_pointer )
 
 		    c_plcol0( 1 )
 		    c_plenv( minx, maxx, miny, maxy, 1, 70 )
@@ -90,19 +91,21 @@ feature {NONE} --Initialization
 		    maxx := 360;
 
 		    c_plenv( -75., 75., -75., 75., 1, -1 )
-		   	create l_map.make (agent mapform19)
-		    plmap( l_map.c_dispatcher, "globe", minx, maxx, miny, maxy )
+		   	create l_map.make
+		   	l_map.register_callback_1 (agent mapform19)
+		    plmap( l_map.c_dispatcher_1, "globe", minx, maxx, miny, maxy )
 
 		    c_pllsty( 2 )
-		    c_plmeridians( l_map.c_dispatcher, 10.0, 10.0, 0.0, 360.0, -10.0, 80.0 )
+		    c_plmeridians( l_map.c_dispatcher_1, 10.0, 10.0, 0.0, 360.0, -10.0, 80.0 )
 
 				--// Polar, Northern hemisphere, this time with a PLplot-wide transform
 
 		    minx := 0
 		    maxx := 360
 
-			create l_transform.make (agent map_transform)
-		    c_plstransform( l_transform.c_dispatcher, default_pointer )
+			create l_transform.make
+			l_transform.register_callback_1 (agent map_transform)
+		    c_plstransform( l_transform.c_dispatcher_1, default_pointer )
 
 		    c_pllsty( 1 )
 		    c_plenv( -75., 75., -75., 75., 1, -1 )

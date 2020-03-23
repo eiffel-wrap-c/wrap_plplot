@@ -75,15 +75,16 @@ feature -- Initialization
 			cgrid1.set_yg(yg1)
 
 				-- Plot using identity transform
-			create l_dispatcher.make (agent on_callback)
+			create l_dispatcher.make
+			l_dispatcher.register_callback_1 (agent on_callback)
 			c_pl_setcontlabelformat( 4, 3 )
 			c_pl_setcontlabelparam( 0.006, 0.3, 0.1, 1 )
 			c_plenv( -1.0, 1.0, -1.0, 1.0, 0, 0 )
 			c_plcol0( 2 )
-			plcont( z, XPTS, YPTS, 1, XPTS, 1, YPTS, clevel, 11, l_dispatcher.c_dispatcher, default_pointer )
+			plcont( z, XPTS, YPTS, 1, XPTS, 1, YPTS, clevel, 11, l_dispatcher.c_dispatcher_1, default_pointer )
 			c_plstyl( 1, $mark, $space )
 			c_plcol0( 3 )
-			plcont( w, XPTS, YPTS, 1, XPTS, 1, YPTS, clevel, 11, l_dispatcher.c_dispatcher, default_pointer )
+			plcont( w, XPTS, YPTS, 1, XPTS, 1, YPTS, clevel, 11, l_dispatcher.c_dispatcher_1, default_pointer )
 			c_plstyl( 0, $mark, $space );
 			c_plcol0( 1 );
 			c_pllab( "X Coordinate", "Y Coordinate", "Streamlines of flow" )

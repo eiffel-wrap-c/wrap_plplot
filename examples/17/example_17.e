@@ -230,7 +230,8 @@ feature -- Initialization
 
 			if ( exclude = 1 ) then
 --				set_callback
-				create l_pldefined.make (agent zdefined)
+				create l_pldefined.make
+				l_pldefined.register_callback_1 (agent zdefined)
 					 -- Load colour palettes
         		c_plspal0( "cmap0_black_on_white.pal" );
         		c_plspal1( "cmap1_gray.pal", 1 );
@@ -247,7 +248,7 @@ feature -- Initialization
 --		            shedge, ns + 1, fill_width,
 --		            cont_color, cont_width,
 --		            plfill_address, 0, pltr2_address, cgrid2)
-		        plshades(z, nx, ny, l_pldefined.c_dispatcher, -1., 1., -1., 1.,
+		        plshades(z, nx, ny, l_pldefined.c_dispatcher_1, -1., 1., -1., 1.,
 		            shedge, ns + 1, fill_width,
 		            cont_color, cont_width,
 		            plfill_address, 0, pltr2_address, cgrid2)
