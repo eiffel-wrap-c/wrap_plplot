@@ -35,20 +35,18 @@ feature {NONE} -- Initialization
 			xmax := 1.0
 			ymin := 0.0
 			ymax := 100.0
-
 			create x.make_filled (0.0, 1, size)
 			create y.make_filled (0.0, 1, size)
 
 				-- prepare data to be plotted.
 
-			across 0|..| (size-1)   as ic loop
-			   x[ic.item + 1] := (ic.item.to_real)  / ( size - 1 ).to_real
-     	  	   y[ic.item + 1] := (ymax * x[ic.item + 1] * x[ic.item + 1]);
+			across
+				0 |..| (size - 1) as ic
+			loop
+				x [ic.item + 1] := (ic.item.to_real) / (size - 1).to_real
+				y [ic.item + 1] := (ymax * x [ic.item + 1] * x [ic.item + 1]);
 			end
-
-
 			i := argument_count
-
 			create {ARRAYED_LIST [STRING]} l_array.make (1)
 				-- parse and process command line arguments.
 			l_res := c_c_plparseopts ($i, argument_array.area.base_address, {PLPLOT_CONSTANTS}.PL_PARSE_FULL)
@@ -59,9 +57,7 @@ feature {NONE} -- Initialization
 				-- Create a labelled box to hold the plot.
 			c_plenv (xmin, xmax, ymin, ymax, 0, 0)
 			c_pllab ("x", "y=100 x#u2#d", "Simple PLplot demo of a 2D line plot")
-
 			plline (x, y)
-
 			finalize
 			io.read_line
 		end

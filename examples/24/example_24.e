@@ -30,7 +30,6 @@ feature --Initialization
 		do
 				-- Initialize plplot
 			initialize
-
 			across 0 |..| 10 as page loop
 				c_pladv( 0 )
 
@@ -77,8 +76,10 @@ feature --Initialization
 								cmdstring.append ((lo[page.item + 1] + slice).out )
 								cmdstring.append ("]")
 							end
-							plptex( x, y + yoffset, 1., 0., 0.5, &cmdString[1] );
-                    		plptex( x, y - yoffset, 1., 0., 0.5, cmdString );
+							if attached  cmdString then
+								c_plptex( x, y + yoffset, 1., 0., 0.5, cmdString[1].out )
+	                    		c_plptex( x, y - yoffset, 1., 0., 0.5, cmdString );
+	                    	end
 						end
 					end
 		        end

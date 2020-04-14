@@ -9,18 +9,60 @@ class EWG_PLPLOT_CALLBACK_C_GLUE_CODE_FUNCTIONS_API
 
 feature -- Access
 
-	get_pltransform_callback_stub: POINTER
+	set_pltransform_callback_object (a_class: POINTER) 
+		do
+			c_set_pltransform_callback_object (a_class)
+		end
+
+	release_pltransform_callback_object
 		external
 			"C inline use <ewg_plplot_callback_c_glue_code.h>"
 		alias
 			"[
-				return get_pltransform_callback_stub ();
+				release_pltransform_callback_object ();
 			]"
 		end
 
-	set_pltransform_callback_entry (a_class: PLTRANSFORM_CALLBACK_DISPATCHER; a_feature: POINTER) 
+	get_pltransform_callback_stub_1: POINTER
+		external
+			"C inline use <ewg_plplot_callback_c_glue_code.h>"
+		alias
+			"[
+				return get_pltransform_callback_stub_1 ();
+			]"
+		end
+
+	get_pltransform_callback_stub_2: POINTER
+		external
+			"C inline use <ewg_plplot_callback_c_glue_code.h>"
+		alias
+			"[
+				return get_pltransform_callback_stub_2 ();
+			]"
+		end
+
+	get_pltransform_callback_stub_3: POINTER
+		external
+			"C inline use <ewg_plplot_callback_c_glue_code.h>"
+		alias
+			"[
+				return get_pltransform_callback_stub_3 ();
+			]"
+		end
+
+	set_pltransform_callback_entry_1 (a_feature: POINTER) 
 		do
-			c_set_pltransform_callback_entry (a_class, a_feature)
+			c_set_pltransform_callback_entry_1 (a_feature)
+		end
+
+	set_pltransform_callback_entry_2 (a_feature: POINTER) 
+		do
+			c_set_pltransform_callback_entry_2 (a_feature)
+		end
+
+	set_pltransform_callback_entry_3 (a_feature: POINTER) 
+		do
+			c_set_pltransform_callback_entry_3 (a_feature)
 		end
 
 	call_pltransform_callback (a_function: POINTER; x: REAL_64; y: REAL_64; xp: POINTER; yp: POINTER; data: POINTER) 
@@ -28,18 +70,60 @@ feature -- Access
 			c_call_pltransform_callback (a_function, x, y, xp, yp, data)
 		end
 
-	get_plmapform_callback_stub: POINTER
+	set_plmapform_callback_object (a_class: POINTER) 
+		do
+			c_set_plmapform_callback_object (a_class)
+		end
+
+	release_plmapform_callback_object
 		external
 			"C inline use <ewg_plplot_callback_c_glue_code.h>"
 		alias
 			"[
-				return get_plmapform_callback_stub ();
+				release_plmapform_callback_object ();
 			]"
 		end
 
-	set_plmapform_callback_entry (a_class: PLMAPFORM_CALLBACK_DISPATCHER; a_feature: POINTER) 
+	get_plmapform_callback_stub_1: POINTER
+		external
+			"C inline use <ewg_plplot_callback_c_glue_code.h>"
+		alias
+			"[
+				return get_plmapform_callback_stub_1 ();
+			]"
+		end
+
+	get_plmapform_callback_stub_2: POINTER
+		external
+			"C inline use <ewg_plplot_callback_c_glue_code.h>"
+		alias
+			"[
+				return get_plmapform_callback_stub_2 ();
+			]"
+		end
+
+	get_plmapform_callback_stub_3: POINTER
+		external
+			"C inline use <ewg_plplot_callback_c_glue_code.h>"
+		alias
+			"[
+				return get_plmapform_callback_stub_3 ();
+			]"
+		end
+
+	set_plmapform_callback_entry_1 (a_feature: POINTER) 
 		do
-			c_set_plmapform_callback_entry (a_class, a_feature)
+			c_set_plmapform_callback_entry_1 (a_feature)
+		end
+
+	set_plmapform_callback_entry_2 (a_feature: POINTER) 
+		do
+			c_set_plmapform_callback_entry_2 (a_feature)
+		end
+
+	set_plmapform_callback_entry_3 (a_feature: POINTER) 
+		do
+			c_set_plmapform_callback_entry_3 (a_feature)
 		end
 
 	call_plmapform_callback (a_function: POINTER; n: INTEGER; x: POINTER; y: POINTER) 
@@ -47,18 +131,60 @@ feature -- Access
 			c_call_plmapform_callback (a_function, n, x, y)
 		end
 
-	get_pldefined_callback_stub: POINTER
+	set_pldefined_callback_object (a_class: POINTER) 
+		do
+			c_set_pldefined_callback_object (a_class)
+		end
+
+	release_pldefined_callback_object
 		external
 			"C inline use <ewg_plplot_callback_c_glue_code.h>"
 		alias
 			"[
-				return get_pldefined_callback_stub ();
+				release_pldefined_callback_object ();
 			]"
 		end
 
-	set_pldefined_callback_entry (a_class: PLDEFINED_CALLBACK_DISPATCHER; a_feature: POINTER) 
+	get_pldefined_callback_stub_1: POINTER
+		external
+			"C inline use <ewg_plplot_callback_c_glue_code.h>"
+		alias
+			"[
+				return get_pldefined_callback_stub_1 ();
+			]"
+		end
+
+	get_pldefined_callback_stub_2: POINTER
+		external
+			"C inline use <ewg_plplot_callback_c_glue_code.h>"
+		alias
+			"[
+				return get_pldefined_callback_stub_2 ();
+			]"
+		end
+
+	get_pldefined_callback_stub_3: POINTER
+		external
+			"C inline use <ewg_plplot_callback_c_glue_code.h>"
+		alias
+			"[
+				return get_pldefined_callback_stub_3 ();
+			]"
+		end
+
+	set_pldefined_callback_entry_1 (a_feature: POINTER) 
 		do
-			c_set_pldefined_callback_entry (a_class, a_feature)
+			c_set_pldefined_callback_entry_1 (a_feature)
+		end
+
+	set_pldefined_callback_entry_2 (a_feature: POINTER) 
+		do
+			c_set_pldefined_callback_entry_2 (a_feature)
+		end
+
+	set_pldefined_callback_entry_3 (a_feature: POINTER) 
+		do
+			c_set_pldefined_callback_entry_3 (a_feature)
 		end
 
 	call_pldefined_callback (a_function: POINTER; x: REAL_64; y: REAL_64): INTEGER 
@@ -66,18 +192,60 @@ feature -- Access
 			Result := c_call_pldefined_callback (a_function, x, y)
 		end
 
-	get_plfill_callback_stub: POINTER
+	set_plfill_callback_object (a_class: POINTER) 
+		do
+			c_set_plfill_callback_object (a_class)
+		end
+
+	release_plfill_callback_object
 		external
 			"C inline use <ewg_plplot_callback_c_glue_code.h>"
 		alias
 			"[
-				return get_plfill_callback_stub ();
+				release_plfill_callback_object ();
 			]"
 		end
 
-	set_plfill_callback_entry (a_class: PLFILL_CALLBACK_DISPATCHER; a_feature: POINTER) 
+	get_plfill_callback_stub_1: POINTER
+		external
+			"C inline use <ewg_plplot_callback_c_glue_code.h>"
+		alias
+			"[
+				return get_plfill_callback_stub_1 ();
+			]"
+		end
+
+	get_plfill_callback_stub_2: POINTER
+		external
+			"C inline use <ewg_plplot_callback_c_glue_code.h>"
+		alias
+			"[
+				return get_plfill_callback_stub_2 ();
+			]"
+		end
+
+	get_plfill_callback_stub_3: POINTER
+		external
+			"C inline use <ewg_plplot_callback_c_glue_code.h>"
+		alias
+			"[
+				return get_plfill_callback_stub_3 ();
+			]"
+		end
+
+	set_plfill_callback_entry_1 (a_feature: POINTER) 
 		do
-			c_set_plfill_callback_entry (a_class, a_feature)
+			c_set_plfill_callback_entry_1 (a_feature)
+		end
+
+	set_plfill_callback_entry_2 (a_feature: POINTER) 
+		do
+			c_set_plfill_callback_entry_2 (a_feature)
+		end
+
+	set_plfill_callback_entry_3 (a_feature: POINTER) 
+		do
+			c_set_plfill_callback_entry_3 (a_feature)
 		end
 
 	call_plfill_callback (a_function: POINTER; n: INTEGER; x: POINTER; y: POINTER) 
@@ -85,18 +253,60 @@ feature -- Access
 			c_call_plfill_callback (a_function, n, x, y)
 		end
 
-	get_pllabel_func_callback_stub: POINTER
+	set_pllabel_func_callback_object (a_class: POINTER) 
+		do
+			c_set_pllabel_func_callback_object (a_class)
+		end
+
+	release_pllabel_func_callback_object
 		external
 			"C inline use <ewg_plplot_callback_c_glue_code.h>"
 		alias
 			"[
-				return get_pllabel_func_callback_stub ();
+				release_pllabel_func_callback_object ();
 			]"
 		end
 
-	set_pllabel_func_callback_entry (a_class: PLLABEL_FUNC_CALLBACK_DISPATCHER; a_feature: POINTER) 
+	get_pllabel_func_callback_stub_1: POINTER
+		external
+			"C inline use <ewg_plplot_callback_c_glue_code.h>"
+		alias
+			"[
+				return get_pllabel_func_callback_stub_1 ();
+			]"
+		end
+
+	get_pllabel_func_callback_stub_2: POINTER
+		external
+			"C inline use <ewg_plplot_callback_c_glue_code.h>"
+		alias
+			"[
+				return get_pllabel_func_callback_stub_2 ();
+			]"
+		end
+
+	get_pllabel_func_callback_stub_3: POINTER
+		external
+			"C inline use <ewg_plplot_callback_c_glue_code.h>"
+		alias
+			"[
+				return get_pllabel_func_callback_stub_3 ();
+			]"
+		end
+
+	set_pllabel_func_callback_entry_1 (a_feature: POINTER) 
 		do
-			c_set_pllabel_func_callback_entry (a_class, a_feature)
+			c_set_pllabel_func_callback_entry_1 (a_feature)
+		end
+
+	set_pllabel_func_callback_entry_2 (a_feature: POINTER) 
+		do
+			c_set_pllabel_func_callback_entry_2 (a_feature)
+		end
+
+	set_pllabel_func_callback_entry_3 (a_feature: POINTER) 
+		do
+			c_set_pllabel_func_callback_entry_3 (a_feature)
 		end
 
 	call_pllabel_func_callback (a_function: POINTER; axis: INTEGER; value: REAL_64; label: STRING; length: INTEGER; data: POINTER) 
@@ -104,18 +314,60 @@ feature -- Access
 			c_call_pllabel_func_callback (a_function, axis, value,  (create {C_STRING}.make (label)).item, length, data)
 		end
 
-	get_plf2eval_callback_stub: POINTER
+	set_plf2eval_callback_object (a_class: POINTER) 
+		do
+			c_set_plf2eval_callback_object (a_class)
+		end
+
+	release_plf2eval_callback_object
 		external
 			"C inline use <ewg_plplot_callback_c_glue_code.h>"
 		alias
 			"[
-				return get_plf2eval_callback_stub ();
+				release_plf2eval_callback_object ();
 			]"
 		end
 
-	set_plf2eval_callback_entry (a_class: PLF2EVAL_CALLBACK_DISPATCHER; a_feature: POINTER) 
+	get_plf2eval_callback_stub_1: POINTER
+		external
+			"C inline use <ewg_plplot_callback_c_glue_code.h>"
+		alias
+			"[
+				return get_plf2eval_callback_stub_1 ();
+			]"
+		end
+
+	get_plf2eval_callback_stub_2: POINTER
+		external
+			"C inline use <ewg_plplot_callback_c_glue_code.h>"
+		alias
+			"[
+				return get_plf2eval_callback_stub_2 ();
+			]"
+		end
+
+	get_plf2eval_callback_stub_3: POINTER
+		external
+			"C inline use <ewg_plplot_callback_c_glue_code.h>"
+		alias
+			"[
+				return get_plf2eval_callback_stub_3 ();
+			]"
+		end
+
+	set_plf2eval_callback_entry_1 (a_feature: POINTER) 
 		do
-			c_set_plf2eval_callback_entry (a_class, a_feature)
+			c_set_plf2eval_callback_entry_1 (a_feature)
+		end
+
+	set_plf2eval_callback_entry_2 (a_feature: POINTER) 
+		do
+			c_set_plf2eval_callback_entry_2 (a_feature)
+		end
+
+	set_plf2eval_callback_entry_3 (a_feature: POINTER) 
+		do
+			c_set_plf2eval_callback_entry_3 (a_feature)
 		end
 
 	call_plf2eval_callback (a_function: POINTER; ix: INTEGER; iy: INTEGER; data: POINTER): REAL_64 
@@ -125,12 +377,39 @@ feature -- Access
 
 feature -- Externals
 
-	c_set_pltransform_callback_entry (a_class: PLTRANSFORM_CALLBACK_DISPATCHER; a_feature: POINTER)
+	c_set_pltransform_callback_object (a_class: POINTER)
 		external
 			"C inline use <ewg_plplot_callback_c_glue_code.h>"
 		alias
 			"[
-				set_pltransform_callback_entry ((void*)$a_class, (void*)$a_feature);
+				set_pltransform_callback_object ((void*)$a_class);
+			]"
+		end
+
+	c_set_pltransform_callback_entry_1 (a_feature: POINTER)
+		external
+			"C inline use <ewg_plplot_callback_c_glue_code.h>"
+		alias
+			"[
+				set_pltransform_callback_entry_1 ((void*)$a_feature);
+			]"
+		end
+
+	c_set_pltransform_callback_entry_2 (a_feature: POINTER)
+		external
+			"C inline use <ewg_plplot_callback_c_glue_code.h>"
+		alias
+			"[
+				set_pltransform_callback_entry_2 ((void*)$a_feature);
+			]"
+		end
+
+	c_set_pltransform_callback_entry_3 (a_feature: POINTER)
+		external
+			"C inline use <ewg_plplot_callback_c_glue_code.h>"
+		alias
+			"[
+				set_pltransform_callback_entry_3 ((void*)$a_feature);
 			]"
 		end
 
@@ -143,12 +422,39 @@ feature -- Externals
 			]"
 		end
 
-	c_set_plmapform_callback_entry (a_class: PLMAPFORM_CALLBACK_DISPATCHER; a_feature: POINTER)
+	c_set_plmapform_callback_object (a_class: POINTER)
 		external
 			"C inline use <ewg_plplot_callback_c_glue_code.h>"
 		alias
 			"[
-				set_plmapform_callback_entry ((void*)$a_class, (void*)$a_feature);
+				set_plmapform_callback_object ((void*)$a_class);
+			]"
+		end
+
+	c_set_plmapform_callback_entry_1 (a_feature: POINTER)
+		external
+			"C inline use <ewg_plplot_callback_c_glue_code.h>"
+		alias
+			"[
+				set_plmapform_callback_entry_1 ((void*)$a_feature);
+			]"
+		end
+
+	c_set_plmapform_callback_entry_2 (a_feature: POINTER)
+		external
+			"C inline use <ewg_plplot_callback_c_glue_code.h>"
+		alias
+			"[
+				set_plmapform_callback_entry_2 ((void*)$a_feature);
+			]"
+		end
+
+	c_set_plmapform_callback_entry_3 (a_feature: POINTER)
+		external
+			"C inline use <ewg_plplot_callback_c_glue_code.h>"
+		alias
+			"[
+				set_plmapform_callback_entry_3 ((void*)$a_feature);
 			]"
 		end
 
@@ -161,12 +467,39 @@ feature -- Externals
 			]"
 		end
 
-	c_set_pldefined_callback_entry (a_class: PLDEFINED_CALLBACK_DISPATCHER; a_feature: POINTER)
+	c_set_pldefined_callback_object (a_class: POINTER)
 		external
 			"C inline use <ewg_plplot_callback_c_glue_code.h>"
 		alias
 			"[
-				set_pldefined_callback_entry ((void*)$a_class, (void*)$a_feature);
+				set_pldefined_callback_object ((void*)$a_class);
+			]"
+		end
+
+	c_set_pldefined_callback_entry_1 (a_feature: POINTER)
+		external
+			"C inline use <ewg_plplot_callback_c_glue_code.h>"
+		alias
+			"[
+				set_pldefined_callback_entry_1 ((void*)$a_feature);
+			]"
+		end
+
+	c_set_pldefined_callback_entry_2 (a_feature: POINTER)
+		external
+			"C inline use <ewg_plplot_callback_c_glue_code.h>"
+		alias
+			"[
+				set_pldefined_callback_entry_2 ((void*)$a_feature);
+			]"
+		end
+
+	c_set_pldefined_callback_entry_3 (a_feature: POINTER)
+		external
+			"C inline use <ewg_plplot_callback_c_glue_code.h>"
+		alias
+			"[
+				set_pldefined_callback_entry_3 ((void*)$a_feature);
 			]"
 		end
 
@@ -179,12 +512,39 @@ feature -- Externals
 			]"
 		end
 
-	c_set_plfill_callback_entry (a_class: PLFILL_CALLBACK_DISPATCHER; a_feature: POINTER)
+	c_set_plfill_callback_object (a_class: POINTER)
 		external
 			"C inline use <ewg_plplot_callback_c_glue_code.h>"
 		alias
 			"[
-				set_plfill_callback_entry ((void*)$a_class, (void*)$a_feature);
+				set_plfill_callback_object ((void*)$a_class);
+			]"
+		end
+
+	c_set_plfill_callback_entry_1 (a_feature: POINTER)
+		external
+			"C inline use <ewg_plplot_callback_c_glue_code.h>"
+		alias
+			"[
+				set_plfill_callback_entry_1 ((void*)$a_feature);
+			]"
+		end
+
+	c_set_plfill_callback_entry_2 (a_feature: POINTER)
+		external
+			"C inline use <ewg_plplot_callback_c_glue_code.h>"
+		alias
+			"[
+				set_plfill_callback_entry_2 ((void*)$a_feature);
+			]"
+		end
+
+	c_set_plfill_callback_entry_3 (a_feature: POINTER)
+		external
+			"C inline use <ewg_plplot_callback_c_glue_code.h>"
+		alias
+			"[
+				set_plfill_callback_entry_3 ((void*)$a_feature);
 			]"
 		end
 
@@ -197,12 +557,39 @@ feature -- Externals
 			]"
 		end
 
-	c_set_pllabel_func_callback_entry (a_class: PLLABEL_FUNC_CALLBACK_DISPATCHER; a_feature: POINTER)
+	c_set_pllabel_func_callback_object (a_class: POINTER)
 		external
 			"C inline use <ewg_plplot_callback_c_glue_code.h>"
 		alias
 			"[
-				set_pllabel_func_callback_entry ((void*)$a_class, (void*)$a_feature);
+				set_pllabel_func_callback_object ((void*)$a_class);
+			]"
+		end
+
+	c_set_pllabel_func_callback_entry_1 (a_feature: POINTER)
+		external
+			"C inline use <ewg_plplot_callback_c_glue_code.h>"
+		alias
+			"[
+				set_pllabel_func_callback_entry_1 ((void*)$a_feature);
+			]"
+		end
+
+	c_set_pllabel_func_callback_entry_2 (a_feature: POINTER)
+		external
+			"C inline use <ewg_plplot_callback_c_glue_code.h>"
+		alias
+			"[
+				set_pllabel_func_callback_entry_2 ((void*)$a_feature);
+			]"
+		end
+
+	c_set_pllabel_func_callback_entry_3 (a_feature: POINTER)
+		external
+			"C inline use <ewg_plplot_callback_c_glue_code.h>"
+		alias
+			"[
+				set_pllabel_func_callback_entry_3 ((void*)$a_feature);
 			]"
 		end
 
@@ -215,12 +602,39 @@ feature -- Externals
 			]"
 		end
 
-	c_set_plf2eval_callback_entry (a_class: PLF2EVAL_CALLBACK_DISPATCHER; a_feature: POINTER)
+	c_set_plf2eval_callback_object (a_class: POINTER)
 		external
 			"C inline use <ewg_plplot_callback_c_glue_code.h>"
 		alias
 			"[
-				set_plf2eval_callback_entry ((void*)$a_class, (void*)$a_feature);
+				set_plf2eval_callback_object ((void*)$a_class);
+			]"
+		end
+
+	c_set_plf2eval_callback_entry_1 (a_feature: POINTER)
+		external
+			"C inline use <ewg_plplot_callback_c_glue_code.h>"
+		alias
+			"[
+				set_plf2eval_callback_entry_1 ((void*)$a_feature);
+			]"
+		end
+
+	c_set_plf2eval_callback_entry_2 (a_feature: POINTER)
+		external
+			"C inline use <ewg_plplot_callback_c_glue_code.h>"
+		alias
+			"[
+				set_plf2eval_callback_entry_2 ((void*)$a_feature);
+			]"
+		end
+
+	c_set_plf2eval_callback_entry_3 (a_feature: POINTER)
+		external
+			"C inline use <ewg_plplot_callback_c_glue_code.h>"
+		alias
+			"[
+				set_plf2eval_callback_entry_3 ((void*)$a_feature);
 			]"
 		end
 
